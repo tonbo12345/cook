@@ -122,7 +122,15 @@
         .made-it-btn { padding:8px 18px; border-radius:12px; border:1px solid var(--glass-border); background:var(--glass-bg); color:var(--text-secondary); font-size:0.82rem; font-family:inherit; cursor:pointer; transition:all 0.3s; }
         .made-it-btn:hover { background:rgba(255,255,255,0.1); }
         .made-it-btn.done { background:rgba(233,69,96,0.15); border-color:rgba(233,69,96,0.3); color:var(--accent-orange); }
-        .made-it-date { font-size:0.72rem; color:var(--text-muted); }
+        .made-it-info { font-size:0.72rem; color:var(--text-muted); line-height:1.4; }
+        .cook-count-badge { display:inline-block; background:rgba(233,69,96,0.2); color:var(--accent-orange); font-weight:700; font-size:0.7rem; padding:2px 8px; border-radius:6px; margin-left:4px; }
+
+        /* Sort controls */
+        .sort-wrap { position:relative; z-index:1; max-width:500px; margin:-10px auto 20px; padding:0 20px; display:flex; align-items:center; gap:8px; }
+        .sort-label { font-size:0.75rem; color:var(--text-muted); font-weight:700; white-space:nowrap; }
+        .sort-btn { padding:5px 14px; border-radius:10px; border:1px solid var(--glass-border); background:transparent; color:var(--text-secondary); font-size:0.78rem; font-family:inherit; cursor:pointer; transition:all 0.2s; }
+        .sort-btn.active { background:var(--accent-gold); color:#fff; border-color:var(--accent-gold); }
+        .sort-btn:hover:not(.active) { background:rgba(255,255,255,0.08); }
 
         .footer-note { position:relative; z-index:1; text-align:center; padding:0 20px 40px; font-size:0.8rem; color:var(--text-muted); }
 
@@ -144,6 +152,11 @@
     <div class="search-wrap">
         <span class="search-icon">🔍</span>
         <input type="text" class="search-input" id="searchInput" placeholder="食材やレシピ名で検索...">
+    </div>
+    <div class="sort-wrap">
+        <span class="sort-label">並び替え:</span>
+        <button class="sort-btn active" id="sortDefault">番号順</button>
+        <button class="sort-btn" id="sortCount">作った回数順</button>
     </div>
 
     <section class="recipes-container" id="recipesContainer">
@@ -180,7 +193,7 @@
                 <div class="tip-box"><div class="tip-label">💡 ポイント</div>酒を振ることで、ささみがパサつかずしっとり仕上がります。</div>
                 <div class="made-it-wrap">
                     <button class="made-it-btn" data-recipe="r1">🍳 作った！</button>
-                    <span class="made-it-date" data-recipe="r1"></span>
+                    <span class="made-it-info" data-recipe="r1"></span>
                 </div>
             </div>
         </article>
@@ -216,7 +229,7 @@
                 <div class="tip-box"><div class="tip-label">💡 ポイント</div>加熱直後に一度混ぜると、全体に味が均一に回ります。</div>
                 <div class="made-it-wrap">
                     <button class="made-it-btn" data-recipe="r2">🍳 作った！</button>
-                    <span class="made-it-date" data-recipe="r2"></span>
+                    <span class="made-it-info" data-recipe="r2"></span>
                 </div>
             </div>
         </article>
@@ -251,7 +264,7 @@
                 <div class="tip-box"><div class="tip-label">💡 ポイント</div>もやしの水分で肉が蒸されるので、驚くほど柔らかくなります。</div>
                 <div class="made-it-wrap">
                     <button class="made-it-btn" data-recipe="r3">🍳 作った！</button>
-                    <span class="made-it-date" data-recipe="r3"></span>
+                    <span class="made-it-info" data-recipe="r3"></span>
                 </div>
             </div>
         </article>
@@ -289,7 +302,7 @@
                 <div class="tip-box"><div class="tip-label">💡 ポイント</div>ブロッコリーの固さに合わせて30秒ずつ加熱時間を調整。冷凍ブロッコリーでもOKです。</div>
                 <div class="made-it-wrap">
                     <button class="made-it-btn" data-recipe="r4">🍳 作った！</button>
-                    <span class="made-it-date" data-recipe="r4"></span>
+                    <span class="made-it-info" data-recipe="r4"></span>
                 </div>
             </div>
         </article>
@@ -326,7 +339,7 @@
                 <div class="tip-box"><div class="tip-label">💡 ポイント</div>冷凍ブロッコリーを使う場合は、解凍してから水分をよく拭き取ると水っぽくなりません。</div>
                 <div class="made-it-wrap">
                     <button class="made-it-btn" data-recipe="r5">🍳 作った！</button>
-                    <span class="made-it-date" data-recipe="r5"></span>
+                    <span class="made-it-info" data-recipe="r5"></span>
                 </div>
             </div>
         </article>
@@ -362,7 +375,7 @@
                 <div class="tip-box"><div class="tip-label">💡 ポイント</div>白菜の芯の部分を下にすると均一に火が通ります。</div>
                 <div class="made-it-wrap">
                     <button class="made-it-btn" data-recipe="r6">🍳 作った！</button>
-                    <span class="made-it-date" data-recipe="r6"></span>
+                    <span class="made-it-info" data-recipe="r6"></span>
                 </div>
             </div>
         </article>
@@ -398,7 +411,7 @@
                 <div class="tip-box"><div class="tip-label">💡 ポイント</div>水気をしっかり絞ることで味がぼやけません。冷凍ほうれん草でもOK。</div>
                 <div class="made-it-wrap">
                     <button class="made-it-btn" data-recipe="r7">🍳 作った！</button>
-                    <span class="made-it-date" data-recipe="r7"></span>
+                    <span class="made-it-info" data-recipe="r7"></span>
                 </div>
             </div>
         </article>
@@ -433,7 +446,7 @@
                 <div class="tip-box"><div class="tip-label">💡 ポイント</div>皮を下にすると煮崩れしにくくなります。冷蔵で3日ほど保存可能。</div>
                 <div class="made-it-wrap">
                     <button class="made-it-btn" data-recipe="r8">🍳 作った！</button>
-                    <span class="made-it-date" data-recipe="r8"></span>
+                    <span class="made-it-info" data-recipe="r8"></span>
                 </div>
             </div>
         </article>
@@ -470,7 +483,7 @@
                 <div class="tip-box"><div class="tip-label">💡 ポイント</div>豆腐は木綿がおすすめ。崩れにくく食べごたえがあります。</div>
                 <div class="made-it-wrap">
                     <button class="made-it-btn" data-recipe="r9">🍳 作った！</button>
-                    <span class="made-it-date" data-recipe="r9"></span>
+                    <span class="made-it-info" data-recipe="r9"></span>
                 </div>
             </div>
         </article>
@@ -508,7 +521,7 @@
                 <div class="tip-box"><div class="tip-label">💡 ポイント</div>余熱で火を通すことでパサつかずしっとり仕上がります。</div>
                 <div class="made-it-wrap">
                     <button class="made-it-btn" data-recipe="r10">🍳 作った！</button>
-                    <span class="made-it-date" data-recipe="r10"></span>
+                    <span class="made-it-info" data-recipe="r10"></span>
                 </div>
             </div>
         </article>
@@ -545,7 +558,7 @@
                 <div class="tip-box"><div class="tip-label">💡 ポイント</div>加熱しすぎると卵が固くなるので、少し半熟くらいで止めるのがコツ。</div>
                 <div class="made-it-wrap">
                     <button class="made-it-btn" data-recipe="r11">🍳 作った！</button>
-                    <span class="made-it-date" data-recipe="r11"></span>
+                    <span class="made-it-info" data-recipe="r11"></span>
                 </div>
             </div>
         </article>
@@ -582,7 +595,7 @@
                 <div class="tip-box"><div class="tip-label">💡 ポイント</div>鮭の厚みによって加熱時間を調整。生鮭でも塩鮭でもOKです。</div>
                 <div class="made-it-wrap">
                     <button class="made-it-btn" data-recipe="r12">🍳 作った！</button>
-                    <span class="made-it-date" data-recipe="r12"></span>
+                    <span class="made-it-info" data-recipe="r12"></span>
                 </div>
             </div>
         </article>
@@ -652,22 +665,35 @@ document.querySelectorAll('.material-tag').forEach((tag, i) => {
     });
 });
 
-// === Made it button ===
+// === Made it button (with count) ===
 function loadMade() {
-    try { return JSON.parse(localStorage.getItem('cook_made') || '{}'); } catch { return {}; }
+    try {
+        const raw = JSON.parse(localStorage.getItem('cook_made') || '{}');
+        // Migrate old format (string date) to new format ({count, lastDate})
+        for (const k in raw) {
+            if (typeof raw[k] === 'string') raw[k] = { count: 1, lastDate: raw[k] };
+        }
+        return raw;
+    } catch { return {}; }
 }
 function saveMade(data) { localStorage.setItem('cook_made', JSON.stringify(data)); }
+function getCount(rid) { const d = loadMade(); return d[rid] ? d[rid].count : 0; }
 
 function updateMadeUI() {
     const data = loadMade();
     document.querySelectorAll('.made-it-btn').forEach(btn => {
         const rid = btn.dataset.recipe;
-        const dateEl = btn.parentElement.querySelector('.made-it-date');
-        if (data[rid]) {
+        const infoEl = btn.parentElement.querySelector('.made-it-info');
+        const entry = data[rid];
+        if (entry && entry.count > 0) {
             btn.classList.add('done');
-            btn.textContent = '✅ 作った！';
-            const d = new Date(data[rid]);
-            dateEl.textContent = '最後: ' + (d.getMonth()+1) + '/' + d.getDate();
+            btn.textContent = '🍳 作った！';
+            const d = new Date(entry.lastDate);
+            infoEl.innerHTML = '<span class="cook-count-badge">' + entry.count + '回</span> 最後: ' + (d.getMonth()+1) + '/' + d.getDate();
+        } else {
+            btn.classList.remove('done');
+            btn.textContent = '🍳 作った！';
+            infoEl.textContent = '';
         }
     });
 }
@@ -677,16 +703,42 @@ document.querySelectorAll('.made-it-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const rid = btn.dataset.recipe;
         const data = loadMade();
-        data[rid] = new Date().toISOString();
+        if (!data[rid]) data[rid] = { count: 0, lastDate: '' };
+        data[rid].count++;
+        data[rid].lastDate = new Date().toISOString();
         saveMade(data);
-        btn.classList.add('done');
-        btn.textContent = '✅ 作った！';
-        const dateEl = btn.parentElement.querySelector('.made-it-date');
-        const d = new Date();
-        dateEl.textContent = '最後: ' + (d.getMonth()+1) + '/' + d.getDate();
+        updateMadeUI();
         btn.style.transform = 'scale(1.15)';
         setTimeout(() => btn.style.transform = '', 200);
     });
+});
+
+// === Sort ===
+const container = document.getElementById('recipesContainer');
+const sortDefaultBtn = document.getElementById('sortDefault');
+const sortCountBtn = document.getElementById('sortCount');
+
+function sortCards(mode) {
+    const cards = [...container.querySelectorAll('.recipe-card')];
+    if (mode === 'count') {
+        cards.sort((a, b) => getCount(b.dataset.recipeId) - getCount(a.dataset.recipeId));
+    } else {
+        cards.sort((a, b) => {
+            const na = parseInt(a.querySelector('.card-number').textContent);
+            const nb = parseInt(b.querySelector('.card-number').textContent);
+            return na - nb;
+        });
+    }
+    cards.forEach(c => container.appendChild(c));
+}
+
+sortDefaultBtn.addEventListener('click', () => {
+    sortDefaultBtn.classList.add('active'); sortCountBtn.classList.remove('active');
+    sortCards('default');
+});
+sortCountBtn.addEventListener('click', () => {
+    sortCountBtn.classList.add('active'); sortDefaultBtn.classList.remove('active');
+    sortCards('count');
 });
 
 // === Search / Filter ===
