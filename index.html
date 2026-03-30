@@ -114,34 +114,7 @@
             color: var(--accent-gold);
         }
 
-        /* Intro section */
-        .intro {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            padding: 0 20px;
-        }
 
-        .intro-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 28px 32px;
-            box-shadow: var(--shadow);
-        }
-
-        .intro-card p {
-            font-size: 0.9rem;
-            line-height: 1.9;
-            color: var(--text-secondary);
-        }
-
-        .intro-card .highlight {
-            color: var(--accent-green);
-            font-weight: 500;
-        }
 
         /* Recipe grid */
         .recipes-container {
@@ -371,71 +344,7 @@
             margin-top: 12px;
         }
 
-        /* Combination section */
-        .combo-section {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
-        }
 
-        .combo-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 32px;
-            box-shadow: var(--shadow);
-        }
-
-        .combo-card h2 {
-            font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .combo-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .combo-item {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            padding: 18px 20px;
-            transition: transform 0.3s, background 0.3s;
-        }
-
-        .combo-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-3px);
-        }
-
-        .combo-item .when {
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent-green);
-            margin-bottom: 6px;
-        }
-
-        .combo-item .recommend {
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        .combo-item .recommend strong {
-            color: var(--text-primary);
-        }
 
         /* Footer */
         .footer-note {
@@ -452,9 +361,7 @@
             .recipes-container {
                 grid-template-columns: 1fr;
             }
-            .combo-grid {
-                grid-template-columns: 1fr;
-            }
+
             .hero {
                 padding: 40px 16px 24px;
             }
@@ -479,15 +386,7 @@
         </p>
     </header>
 
-    <!-- Intro -->
-    <section class="intro">
-        <div class="intro-card">
-            <p>
-                「ガリバタ醤油蒸し」、美味しく召し上がっていただけて良かったです！きのこの旨味とバター醤油は鉄板ですよね。
-                電子レンジ調理は<span class="highlight">「蒸す」</span>状態になるので、油を最小限に抑えつつ、食材の栄養も逃がしにくいのがヘルシーなポイントです。
-            </p>
-        </div>
-    </section>
+
 
     <!-- Recipes -->
     <section class="recipes-container">
@@ -581,25 +480,7 @@
 
     </section>
 
-    <!-- Combination -->
-    <section class="combo-section">
-        <div class="combo-card">
-            <h2>🍽️ 組み合わせてさらにヘルシーに！</h2>
-            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.7;">
-                どれも<strong style="color: var(--accent-gold);">「アイリスオーヤマの圧力鍋で作った具だくさんスープ」</strong>とも相性抜群です。
-            </p>
-            <div class="combo-grid">
-                <div class="combo-item">
-                    <div class="when">主食を抑えたい時</div>
-                    <p class="recommend">🍆 <strong>ナスの煮浸し</strong>がおすすめ</p>
-                </div>
-                <div class="combo-item">
-                    <div class="when">タンパク質をしっかり</div>
-                    <p class="recommend">🥩 <strong>ささみキャベツ</strong>や<strong>もやし豚</strong></p>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <footer class="footer-note">
         <p>🌿 電子レンジで簡単・ヘルシー・美味しい毎日を。</p>
