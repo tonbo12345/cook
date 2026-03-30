@@ -53,7 +53,7 @@
         /* Recipes */
         .recipes-container { position:relative; z-index:1; max-width:1100px; margin:0 auto; padding:0 20px 60px; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:28px; }
         .recipe-card { background:var(--glass-bg); backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:24px; overflow:hidden; transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275),box-shadow 0.4s ease; animation:fadeInUp 0.7s ease both; position:relative; }
-        .recipe-card:nth-child(1){animation-delay:0.1s} .recipe-card:nth-child(2){animation-delay:0.15s} .recipe-card:nth-child(3){animation-delay:0.2s} .recipe-card:nth-child(4){animation-delay:0.25s} .recipe-card:nth-child(5){animation-delay:0.3s} .recipe-card:nth-child(6){animation-delay:0.35s} .recipe-card:nth-child(7){animation-delay:0.4s} .recipe-card:nth-child(8){animation-delay:0.45s} .recipe-card:nth-child(9){animation-delay:0.5s} .recipe-card:nth-child(10){animation-delay:0.55s} .recipe-card:nth-child(11){animation-delay:0.6s} .recipe-card:nth-child(12){animation-delay:0.65s}
+        .recipe-card:nth-child(1){animation-delay:0.1s} .recipe-card:nth-child(2){animation-delay:0.15s} .recipe-card:nth-child(3){animation-delay:0.2s} .recipe-card:nth-child(4){animation-delay:0.25s} .recipe-card:nth-child(5){animation-delay:0.3s} .recipe-card:nth-child(6){animation-delay:0.35s} .recipe-card:nth-child(7){animation-delay:0.4s} .recipe-card:nth-child(8){animation-delay:0.45s} .recipe-card:nth-child(9){animation-delay:0.5s} .recipe-card:nth-child(10){animation-delay:0.55s} .recipe-card:nth-child(11){animation-delay:0.6s} .recipe-card:nth-child(12){animation-delay:0.65s} .recipe-card:nth-child(13){animation-delay:0.7s} .recipe-card:nth-child(14){animation-delay:0.75s} .recipe-card:nth-child(15){animation-delay:0.8s} .recipe-card:nth-child(16){animation-delay:0.85s} .recipe-card:nth-child(17){animation-delay:0.9s} .recipe-card:nth-child(18){animation-delay:0.95s}
         .recipe-card:hover { transform:translateY(-6px) scale(1.01); box-shadow:0 20px 60px rgba(0,0,0,0.4); }
         .recipe-card.hidden { display:none; }
 
@@ -71,6 +71,12 @@
         .recipe-card:nth-child(10) .card-header::before{background:linear-gradient(135deg,var(--accent-purple),var(--accent-orange))}
         .recipe-card:nth-child(11) .card-header::before{background:linear-gradient(135deg,var(--accent-gold),var(--accent-green))}
         .recipe-card:nth-child(12) .card-header::before{background:linear-gradient(135deg,var(--accent-orange),var(--accent-purple))}
+        .recipe-card:nth-child(13) .card-header::before{background:linear-gradient(135deg,var(--accent-orange),var(--accent-gold))}
+        .recipe-card:nth-child(14) .card-header::before{background:linear-gradient(135deg,var(--accent-gold),var(--accent-green))}
+        .recipe-card:nth-child(15) .card-header::before{background:linear-gradient(135deg,var(--accent-green),var(--accent-purple))}
+        .recipe-card:nth-child(16) .card-header::before{background:linear-gradient(135deg,var(--accent-purple),var(--accent-orange))}
+        .recipe-card:nth-child(17) .card-header::before{background:linear-gradient(135deg,var(--accent-gold),var(--accent-purple))}
+        .recipe-card:nth-child(18) .card-header::before{background:linear-gradient(135deg,var(--accent-green),var(--accent-gold))}
 
         .card-number { position:relative; z-index:1; display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:12px; font-weight:900; font-size:0.9rem; margin-bottom:10px; }
         .recipe-card:nth-child(1) .card-number{background:linear-gradient(135deg,var(--accent-orange),var(--accent-gold))}
@@ -85,6 +91,12 @@
         .recipe-card:nth-child(10) .card-number{background:linear-gradient(135deg,var(--accent-purple),var(--accent-orange))}
         .recipe-card:nth-child(11) .card-number{background:linear-gradient(135deg,var(--accent-gold),var(--accent-green))}
         .recipe-card:nth-child(12) .card-number{background:linear-gradient(135deg,var(--accent-orange),var(--accent-purple))}
+        .recipe-card:nth-child(13) .card-number{background:linear-gradient(135deg,var(--accent-orange),var(--accent-gold))}
+        .recipe-card:nth-child(14) .card-number{background:linear-gradient(135deg,var(--accent-gold),var(--accent-green))}
+        .recipe-card:nth-child(15) .card-number{background:linear-gradient(135deg,var(--accent-green),var(--accent-purple))}
+        .recipe-card:nth-child(16) .card-number{background:linear-gradient(135deg,var(--accent-purple),var(--accent-orange))}
+        .recipe-card:nth-child(17) .card-number{background:linear-gradient(135deg,var(--accent-gold),var(--accent-purple))}
+        .recipe-card:nth-child(18) .card-number{background:linear-gradient(135deg,var(--accent-green),var(--accent-gold))}
 
         .card-title { position:relative; z-index:1; font-family:'M PLUS Rounded 1c',sans-serif; font-size:1.25rem; font-weight:700; line-height:1.4; margin-bottom:6px; }
         .card-subtitle { position:relative; z-index:1; font-size:0.82rem; color:var(--text-secondary); line-height:1.6; }
@@ -146,7 +158,7 @@
     <header class="hero">
         <div class="hero-badge">🍳 Microwave Cooking</div>
         <h1>電子レンジで簡単<br>ヘルシーレシピ</h1>
-        <p class="hero-subtitle">油を最小限に抑えつつ、食材の<strong>栄養も逃がしにくい</strong>電子レンジ調理。<br>厳選した12の簡単レシピをご紹介します。</p>
+        <p class="hero-subtitle">油を最小限に抑えつつ、食材の<strong>栄養も逃がしにくい</strong>電子レンジ調理。<br>厳選した18の簡単レシピをご紹介します。</p>
     </header>
 
     <div class="search-wrap">
@@ -596,6 +608,227 @@
                 <div class="made-it-wrap">
                     <button class="made-it-btn" data-recipe="r12">🍳 作った！</button>
                     <span class="made-it-info" data-recipe="r12"></span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 13 -->
+        <article class="recipe-card" data-recipe-id="r13">
+            <div class="card-header">
+                <div class="card-number">13</div>
+                <h2 class="card-title">鶏むね肉とキャベツの<br>「レンジ回鍋肉風」</h2>
+                <p class="card-subtitle">味噌ベースの中華味で白飯がすすむ！</p>
+                <div class="microwave-badge">⚡ 600W ・ 4〜5分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
+                <div class="materials-list">
+                    <span class="material-tag" data-qty="100" data-tpl="鶏むね肉 {q}g">鶏むね肉 100g</span>
+                    <span class="material-tag" data-qty="2" data-tpl="キャベツ {q}枚">キャベツ 2枚</span>
+                    <span class="material-tag" data-qty="1" data-tpl="味噌 大さじ{q}">味噌 大さじ1</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="砂糖 小さじ{q}">砂糖 小さじ1/2</span>
+                    <span class="material-tag" data-qty="1" data-tpl="醤油 小さじ{q}">醤油 小さじ1</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="豆板醤 小さじ{q}">豆板醤 小さじ1/2</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>鶏むね肉を薄切りにし、キャベツはざく切りにして耐熱容器に入れる。</li>
+                    <li><strong>味噌・砂糖・醤油・豆板醤</strong>を混ぜて回しかけ、ラップをして600Wで<strong>4〜5分</strong>加熱。</li>
+                    <li>全体をよく混ぜて完成！お好みで<strong>ごま油</strong>を回しかけても◎</li>
+                </ol>
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>鶏むね肉は削ぎ切りにすると味が染みやすくなります。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r13">🍳 作った！</button>
+                    <span class="made-it-info" data-recipe="r13"></span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 14 -->
+        <article class="recipe-card" data-recipe-id="r14">
+            <div class="card-header">
+                <div class="card-number">14</div>
+                <h2 class="card-title">じゃがいもの<br>「レンジジャーマンポテト風」</h2>
+                <p class="card-subtitle">ホクホクで満足感◎コンソメバターがたまらない！</p>
+                <div class="microwave-badge">⚡ 600W ・ 5〜6分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
+                <div class="materials-list">
+                    <span class="material-tag" data-qty="1" data-tpl="じゃがいも {q}個">じゃがいも 1個</span>
+                    <span class="material-tag" data-qty="0.25" data-tpl="たまねぎ {q}個">たまねぎ 1/4個</span>
+                    <span class="material-tag" data-qty="5" data-tpl="バター {q}g">バター 5g</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="コンソメ {q}個">コンソメ 1/2個</span>
+                    <span class="material-tag" data-noscale>塩コショウ 少々</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>じゃがいもを一口大に切り、たまねぎは薄切りにして耐熱容器に入れる。</li>
+                    <li><strong>コンソメ・バター・塩コショウ</strong>をのせ、ラップをして600Wで<strong>5〜6分</strong>加熱。</li>
+                    <li>竹串が通れば全体を混ぜて完成！お好みで<strong>粗挝き黒コショウ</strong>を振っても◎</li>
+                </ol>
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>じゃがいもは小さめに切ると火が通りやすいです。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r14">🍳 作った！</button>
+                    <span class="made-it-info" data-recipe="r14"></span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 15 -->
+        <article class="recipe-card" data-recipe-id="r15">
+            <div class="card-header">
+                <div class="card-number">15</div>
+                <h2 class="card-title">チンゲンサイと鶏むねの<br>「中華オイスター蒸し」</h2>
+                <p class="card-subtitle">オイスターソースのコクで白飯泥棒！</p>
+                <div class="microwave-badge">⚡ 600W ・ 3〜4分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
+                <div class="materials-list">
+                    <span class="material-tag" data-qty="1" data-tpl="チンゲンサイ {q}株">チンゲンサイ 1株</span>
+                    <span class="material-tag" data-qty="100" data-tpl="鶏むね肉 {q}g">鶏むね肉 100g</span>
+                    <span class="material-tag" data-qty="1" data-tpl="オイスターソース 大さじ{q}">オイスターソース 大さじ1</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="鶏ガラスープの素 小さじ{q}">鶏ガラスープの素 小さじ1/2</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="ごま油 小さじ{q}">ごま油 小さじ1/2</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>鶏むね肉を薄切りにし、チンゲンサイは縦半分に切って耐熱容器に入れる。</li>
+                    <li><strong>オイスターソース・鶏ガラスープの素・ごま油</strong>を回しかけ、ラップをして600Wで<strong>3〜4分</strong>加熱。</li>
+                    <li>鶏肉に火が通れば完成！お好みで<strong>白ごま</strong>を振っても◎</li>
+                </ol>
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>チンゲンサイの根元は火が通りにくいので、切り込みを入れると良いです。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r15">🍳 作った！</button>
+                    <span class="made-it-info" data-recipe="r15"></span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 16 -->
+        <article class="recipe-card" data-recipe-id="r16">
+            <div class="card-header">
+                <div class="card-number">16</div>
+                <h2 class="card-title">たまねぎの<br>「丸ごとレンジ蒸し」</h2>
+                <p class="card-subtitle">加熱でとろっと甘い！バターポン酒が絶品。</p>
+                <div class="microwave-badge">⚡ 600W ・ 4〜5分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
+                <div class="materials-list">
+                    <span class="material-tag" data-qty="1" data-tpl="たまねぎ {q}個">たまねぎ 1個</span>
+                    <span class="material-tag" data-qty="5" data-tpl="バター {q}g">バター 5g</span>
+                    <span class="material-tag" data-qty="1" data-tpl="ポン酒 大さじ{q}">ポン酒 大さじ1</span>
+                    <span class="material-tag" data-noscale>かつお節 少々</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>たまねぎの上部に<strong>十字に切り込み</strong>を入れ、バターをのせる。</li>
+                    <li>ラップをして600Wで<strong>4〜5分</strong>加熱。</li>
+                    <li><strong>ポン酒</strong>をかけ、かつお節をのせて完成！</li>
+                </ol>
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>新たまねぎならさらに甘く仕上がります。切り込みを深めに入れると火が通りやすい。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r16">🍳 作った！</button>
+                    <span class="made-it-info" data-recipe="r16"></span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 17 -->
+        <article class="recipe-card" data-recipe-id="r17">
+            <div class="card-header">
+                <div class="card-number">17</div>
+                <h2 class="card-title">じゃがいもとキャベツの<br>「コンソメバター蒸し」</h2>
+                <p class="card-subtitle">バターのコクとコンソメの旨味。洋風副菜にぴったり。</p>
+                <div class="microwave-badge">⚡ 600W ・ 5〜6分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
+                <div class="materials-list">
+                    <span class="material-tag" data-qty="1" data-tpl="じゃがいも {q}個">じゃがいも 1個</span>
+                    <span class="material-tag" data-qty="2" data-tpl="キャベツ {q}枚">キャベツ 2枚</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="コンソメ {q}個">コンソメ 1/2個</span>
+                    <span class="material-tag" data-qty="5" data-tpl="バター {q}g">バター 5g</span>
+                    <span class="material-tag" data-noscale>塩コショウ 少々</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>じゃがいもを一口大に切り、キャベツはざく切りにして耐熱容器に入れる。</li>
+                    <li><strong>コンソメ・バター・塩コショウ</strong>をのせ、ラップをして600Wで<strong>5〜6分</strong>加熱。</li>
+                    <li>じゃがいもに火が通れば全体を混ぜて完成！</li>
+                </ol>
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>じゃがいもは薄めに切ると加熱時間が短くなります。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r17">🍳 作った！</button>
+                    <span class="made-it-info" data-recipe="r17"></span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 18 -->
+        <article class="recipe-card" data-recipe-id="r18">
+            <div class="card-header">
+                <div class="card-number">18</div>
+                <h2 class="card-title">チンゲンサイの<br>「ガーリックオイル蒸し」</h2>
+                <p class="card-subtitle">シンプルに美味しい！ごま油の香りがたまらない。</p>
+                <div class="microwave-badge">⚡ 600W ・ 2〜3分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
+                <div class="materials-list">
+                    <span class="material-tag" data-qty="1" data-tpl="チンゲンサイ {q}株">チンゲンサイ 1株</span>
+                    <span class="material-tag" data-qty="1" data-tpl="にんにくチューブ {q}cm">にんにくチューブ 1cm</span>
+                    <span class="material-tag" data-qty="1" data-tpl="ごま油 小さじ{q}">ごま油 小さじ1</span>
+                    <span class="material-tag" data-noscale>塩 少々</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>チンゲンサイを縦半分に切り、耐熱皿に並べる。</li>
+                    <li><strong>にんにくチューブ・ごま油・塩</strong>を回しかけ、ラップをして600Wで<strong>2〜3分</strong>加熱。</li>
+                    <li>チンゲンサイがしんなりすれば完成！</li>
+                </ol>
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>仕上げに白ごまや糸唐辛子をのせると見た目も味もアップ！</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r18">🍳 作った！</button>
+                    <span class="made-it-info" data-recipe="r18"></span>
                 </div>
             </div>
         </article>
