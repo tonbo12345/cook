@@ -143,6 +143,8 @@
         .recipe-card:nth-child(1) { animation-delay: 0.1s; }
         .recipe-card:nth-child(2) { animation-delay: 0.25s; }
         .recipe-card:nth-child(3) { animation-delay: 0.4s; }
+        .recipe-card:nth-child(4) { animation-delay: 0.55s; }
+        .recipe-card:nth-child(5) { animation-delay: 0.7s; }
 
         .recipe-card:hover {
             transform: translateY(-8px) scale(1.02);
@@ -183,6 +185,12 @@
         .recipe-card:nth-child(3) .card-header::before {
             background: linear-gradient(135deg, var(--accent-green), var(--accent-gold));
         }
+        .recipe-card:nth-child(4) .card-header::before {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+        }
+        .recipe-card:nth-child(5) .card-header::before {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-purple));
+        }
 
         .card-number {
             position: relative;
@@ -206,6 +214,12 @@
         }
         .recipe-card:nth-child(3) .card-number {
             background: linear-gradient(135deg, var(--accent-green), var(--accent-gold));
+        }
+        .recipe-card:nth-child(4) .card-number {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+        }
+        .recipe-card:nth-child(5) .card-number {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-purple));
         }
 
         .card-title {
@@ -382,7 +396,7 @@
         <h1>電子レンジで簡単<br>ヘルシーレシピ</h1>
         <p class="hero-subtitle">
             油を最小限に抑えつつ、食材の<strong>栄養も逃がしにくい</strong>電子レンジ調理。<br>
-            厳選した3つの簡単レシピをご紹介します。
+            厳選した5つの簡単レシピをご紹介します。
         </p>
     </header>
 
@@ -474,6 +488,67 @@
                 <div class="tip-box">
                     <div class="tip-label">💡 ポイント</div>
                     もやしの水分で肉が蒸されるので、驚くほど柔らかくなります。
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 4 -->
+        <article class="recipe-card">
+            <div class="card-header">
+                <div class="card-number">4</div>
+                <h2 class="card-title">きのことブロッコリーの<br>「ガリバタ醤油蒸し」</h2>
+                <p class="card-subtitle">バターのコクと醤油の香ばしさで、満足感のある一品。</p>
+                <div class="microwave-badge">⚡ 600W ・ 約3分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="materials-list">
+                    <span class="material-tag">ブロッコリー 1/2株</span>
+                    <span class="material-tag">きのこ 1/2パック</span>
+                    <span class="material-tag">醤油 小さじ1</span>
+                    <span class="material-tag">バター 5g</span>
+                    <span class="material-tag">にんにくチューブ 1cm</span>
+                    <span class="material-tag">塩コショウ 少々</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>耐熱ボウルにブロッコリーときのこを入れ、ふんわりラップをかける。</li>
+                    <li>電子レンジ600Wで<strong>約3分</strong>加熱する。</li>
+                    <li>熱いうちに調味料をすべて入れ、<strong>バターを溶かしながら</strong>全体を和えれば完成！</li>
+                </ol>
+                <div class="tip-box">
+                    <div class="tip-label">💡 ポイント</div>
+                    ブロッコリーの固さに合わせて30秒ずつ加熱時間を調整。冷凍ブロッコリーでもOKです。
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 5 -->
+        <article class="recipe-card">
+            <div class="card-header">
+                <div class="card-number">5</div>
+                <h2 class="card-title">無限きのこブロッコリー<br>「ナムル風」</h2>
+                <p class="card-subtitle">ごま油の香りで食欲がすすむ！作り置きにも便利。</p>
+                <div class="microwave-badge">⚡ 600W ・ 約3分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="materials-list">
+                    <span class="material-tag">ブロッコリー 1/2株</span>
+                    <span class="material-tag">きのこ 1/2パック</span>
+                    <span class="material-tag">ごま油 小さじ1</span>
+                    <span class="material-tag">鶏ガラスープの素 小さじ1/2</span>
+                    <span class="material-tag">いりごま 少々</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>耐熱ボウルに野菜を入れ、<strong>水（大さじ1）</strong>を振りかけてラップをする。</li>
+                    <li>電子レンジ600Wで<strong>約3分</strong>加熱する。</li>
+                    <li>水気を軽く切り、<strong>調味料を和える</strong>だけで完成！</li>
+                </ol>
+                <div class="tip-box">
+                    <div class="tip-label">💡 ポイント</div>
+                    冷凍ブロッコリーを使う場合は、解凍してから水分をよく拭き取ると水っぽくなりません。
                 </div>
             </div>
         </article>
