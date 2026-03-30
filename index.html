@@ -4,15 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>電子レンジで簡単ヘルシーレシピ</title>
-    <meta name="description" content="電子レンジだけで作れる簡単ヘルシーレシピ集。ささみ酒蒸し、ナス煮浸し、もやし豚バラ蒸しなど。">
+    <meta name="description" content="電子レンジだけで作れる簡単ヘルシーレシピ集。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=M+PLUS+Rounded+1c:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #1a1a2e;
-            --bg-secondary: #16213e;
-            --bg-card: #0f3460;
             --accent-orange: #e94560;
             --accent-gold: #f5a623;
             --accent-green: #00d2d3;
@@ -20,393 +18,124 @@
             --text-primary: #f0f0f0;
             --text-secondary: #b0b0c0;
             --text-muted: #7a7a8e;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            --glass-bg: rgba(255,255,255,0.05);
+            --glass-border: rgba(255,255,255,0.1);
+            --shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Noto Sans JP',sans-serif; background:var(--bg-primary); color:var(--text-primary); min-height:100vh; overflow-x:hidden; }
+        body::before { content:''; position:fixed; top:-50%; left:-50%; width:200%; height:200%;
+            background: radial-gradient(circle at 20% 80%,rgba(233,69,96,0.08) 0%,transparent 50%),
+            radial-gradient(circle at 80% 20%,rgba(0,210,211,0.08) 0%,transparent 50%),
+            radial-gradient(circle at 50% 50%,rgba(168,85,247,0.05) 0%,transparent 50%);
+            animation:bgFloat 20s ease-in-out infinite; z-index:0; }
+        @keyframes bgFloat { 0%,100%{transform:translate(0,0) rotate(0deg)} 33%{transform:translate(2%,-2%) rotate(1deg)} 66%{transform:translate(-1%,1%) rotate(-1deg)} }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        .hero { position:relative; z-index:1; text-align:center; padding:50px 20px 30px; }
+        .hero-badge { display:inline-block; background:linear-gradient(135deg,var(--accent-orange),var(--accent-gold)); color:#fff; font-size:0.75rem; font-weight:700; padding:6px 18px; border-radius:50px; letter-spacing:0.1em; margin-bottom:16px; animation:fadeInDown 0.6s ease; }
+        .hero h1 { font-family:'M PLUS Rounded 1c',sans-serif; font-size:clamp(1.8rem,5vw,3rem); font-weight:900;
+            background:linear-gradient(135deg,#fff 0%,var(--accent-green) 50%,var(--accent-gold) 100%); background-size:200% 200%;
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+            animation:gradientShift 4s ease-in-out infinite; line-height:1.4; margin-bottom:12px; }
+        @keyframes gradientShift { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+        .hero-subtitle { font-size:0.9rem; color:var(--text-secondary); max-width:600px; margin:0 auto; line-height:1.8; }
+        .hero-subtitle strong { color:var(--accent-gold); }
+        @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
 
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+        /* Search */
+        .search-wrap { position:relative; z-index:1; max-width:500px; margin:0 auto 30px; padding:0 20px; }
+        .search-input { width:100%; padding:14px 20px 14px 48px; border-radius:16px; border:1px solid var(--glass-border); background:var(--glass-bg); backdrop-filter:blur(20px); color:var(--text-primary); font-size:0.95rem; font-family:inherit; outline:none; transition:border-color 0.3s,box-shadow 0.3s; }
+        .search-input::placeholder { color:var(--text-muted); }
+        .search-input:focus { border-color:var(--accent-green); box-shadow:0 0 20px rgba(0,210,211,0.15); }
+        .search-icon { position:absolute; left:36px; top:50%; transform:translateY(-50%); font-size:1.1rem; pointer-events:none; }
 
-        /* Animated background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(233, 69, 96, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(0, 210, 211, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
-            animation: bgFloat 20s ease-in-out infinite;
-            z-index: 0;
-        }
+        /* Recipes */
+        .recipes-container { position:relative; z-index:1; max-width:1100px; margin:0 auto; padding:0 20px 60px; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:28px; }
+        .recipe-card { background:var(--glass-bg); backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:24px; overflow:hidden; transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275),box-shadow 0.4s ease; animation:fadeInUp 0.7s ease both; position:relative; }
+        .recipe-card:nth-child(1){animation-delay:0.1s} .recipe-card:nth-child(2){animation-delay:0.2s} .recipe-card:nth-child(3){animation-delay:0.3s} .recipe-card:nth-child(4){animation-delay:0.4s} .recipe-card:nth-child(5){animation-delay:0.5s}
+        .recipe-card:hover { transform:translateY(-6px) scale(1.01); box-shadow:0 20px 60px rgba(0,0,0,0.4); }
+        .recipe-card.hidden { display:none; }
 
-        @keyframes bgFloat {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(2%, -2%) rotate(1deg); }
-            66% { transform: translate(-1%, 1%) rotate(-1deg); }
-        }
+        .card-header { position:relative; padding:28px 24px 16px; overflow:hidden; }
+        .card-header::before { content:''; position:absolute; inset:0; opacity:0.15; z-index:0; }
+        .recipe-card:nth-child(1) .card-header::before{background:linear-gradient(135deg,var(--accent-orange),var(--accent-gold))}
+        .recipe-card:nth-child(2) .card-header::before{background:linear-gradient(135deg,var(--accent-purple),var(--accent-green))}
+        .recipe-card:nth-child(3) .card-header::before{background:linear-gradient(135deg,var(--accent-green),var(--accent-gold))}
+        .recipe-card:nth-child(4) .card-header::before{background:linear-gradient(135deg,var(--accent-gold),var(--accent-orange))}
+        .recipe-card:nth-child(5) .card-header::before{background:linear-gradient(135deg,var(--accent-green),var(--accent-purple))}
 
-        /* Header */
-        .hero {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 60px 20px 40px;
-        }
+        .card-number { position:relative; z-index:1; display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:12px; font-weight:900; font-size:0.9rem; margin-bottom:10px; }
+        .recipe-card:nth-child(1) .card-number{background:linear-gradient(135deg,var(--accent-orange),var(--accent-gold))}
+        .recipe-card:nth-child(2) .card-number{background:linear-gradient(135deg,var(--accent-purple),var(--accent-green))}
+        .recipe-card:nth-child(3) .card-number{background:linear-gradient(135deg,var(--accent-green),var(--accent-gold))}
+        .recipe-card:nth-child(4) .card-number{background:linear-gradient(135deg,var(--accent-gold),var(--accent-orange))}
+        .recipe-card:nth-child(5) .card-number{background:linear-gradient(135deg,var(--accent-green),var(--accent-purple))}
 
-        .hero-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--accent-orange), var(--accent-gold));
-            color: #fff;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 6px 18px;
-            border-radius: 50px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            animation: fadeInDown 0.6s ease;
-        }
+        .card-title { position:relative; z-index:1; font-family:'M PLUS Rounded 1c',sans-serif; font-size:1.25rem; font-weight:700; line-height:1.4; margin-bottom:6px; }
+        .card-subtitle { position:relative; z-index:1; font-size:0.82rem; color:var(--text-secondary); line-height:1.6; }
+        .microwave-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(0,210,211,0.1); border:1px solid rgba(0,210,211,0.2); border-radius:50px; padding:5px 14px; font-size:0.75rem; font-weight:500; color:var(--accent-green); margin-top:10px; }
 
-        .hero h1 {
-            font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
-            font-size: clamp(1.8rem, 5vw, 3rem);
-            font-weight: 900;
-            background: linear-gradient(135deg, #fff 0%, var(--accent-green) 50%, var(--accent-gold) 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 4s ease-in-out infinite;
-            line-height: 1.4;
-            margin-bottom: 16px;
-        }
+        .card-body { padding:0 24px 24px; }
+        .section-label { display:inline-flex; align-items:center; gap:6px; font-size:0.72rem; font-weight:700; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:10px; }
+        .section-label .icon { font-size:0.9rem; }
 
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .hero-subtitle {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        .hero-subtitle strong {
-            color: var(--accent-gold);
-        }
-
-
-
-        /* Recipe grid */
-        .recipes-container {
-            position: relative;
-            z-index: 1;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px 60px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 28px;
-        }
-
-        /* Recipe card */
-        .recipe-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-            animation: fadeInUp 0.7s ease both;
-            position: relative;
-        }
-
-        .recipe-card:nth-child(1) { animation-delay: 0.1s; }
-        .recipe-card:nth-child(2) { animation-delay: 0.25s; }
-        .recipe-card:nth-child(3) { animation-delay: 0.4s; }
-        .recipe-card:nth-child(4) { animation-delay: 0.55s; }
-        .recipe-card:nth-child(5) { animation-delay: 0.7s; }
-
-        .recipe-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Card header with gradient */
-        .card-header {
-            position: relative;
-            padding: 32px 28px 20px;
-            overflow: hidden;
-        }
-
-        .card-header::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            opacity: 0.15;
-            z-index: 0;
-        }
-
-        .recipe-card:nth-child(1) .card-header::before {
-            background: linear-gradient(135deg, var(--accent-orange), var(--accent-gold));
-        }
-        .recipe-card:nth-child(2) .card-header::before {
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-green));
-        }
-        .recipe-card:nth-child(3) .card-header::before {
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-gold));
-        }
-        .recipe-card:nth-child(4) .card-header::before {
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
-        }
-        .recipe-card:nth-child(5) .card-header::before {
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-purple));
-        }
-
-        .card-number {
-            position: relative;
-            z-index: 1;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 12px;
-            font-weight: 900;
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-        }
-
-        .recipe-card:nth-child(1) .card-number {
-            background: linear-gradient(135deg, var(--accent-orange), var(--accent-gold));
-        }
-        .recipe-card:nth-child(2) .card-number {
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-green));
-        }
-        .recipe-card:nth-child(3) .card-number {
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-gold));
-        }
-        .recipe-card:nth-child(4) .card-number {
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
-        }
-        .recipe-card:nth-child(5) .card-number {
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-purple));
-        }
-
-        .card-title {
-            position: relative;
-            z-index: 1;
-            font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            line-height: 1.4;
-            margin-bottom: 8px;
-        }
-
-        .card-subtitle {
-            position: relative;
-            z-index: 1;
-            font-size: 0.82rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* Card body */
-        .card-body {
-            padding: 0 28px 28px;
-        }
+        /* Serving selector */
+        .serving-selector { display:flex; align-items:center; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+        .serving-label { font-size:0.75rem; color:var(--text-muted); font-weight:700; }
+        .serving-btn { padding:4px 12px; border-radius:8px; border:1px solid var(--glass-border); background:transparent; color:var(--text-secondary); font-size:0.78rem; font-family:inherit; cursor:pointer; transition:all 0.2s; }
+        .serving-btn.active { background:var(--accent-green); color:#fff; border-color:var(--accent-green); }
+        .serving-btn:hover:not(.active) { background:rgba(255,255,255,0.08); }
 
         /* Materials */
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-        }
-
-        .section-label .icon {
-            font-size: 0.9rem;
-        }
-
-        .materials-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-
-        .material-tag {
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 6px 14px;
-            font-size: 0.82rem;
-            color: var(--text-primary);
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        .material-tag:hover {
-            background: rgba(255, 255, 255, 0.12);
-            transform: scale(1.05);
-        }
+        .materials-list { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+        .material-tag { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:6px 14px; font-size:0.82rem; color:var(--text-primary); cursor:pointer; transition:all 0.3s; user-select:none; }
+        .material-tag:hover { background:rgba(255,255,255,0.12); }
+        .material-tag.checked { background:rgba(0,210,211,0.12); border-color:rgba(0,210,211,0.3); text-decoration:line-through; opacity:0.6; }
+        .material-tag.checked::before { content:'✓ '; color:var(--accent-green); }
 
         /* Steps */
-        .steps {
-            list-style: none;
-            counter-reset: step;
-        }
+        .steps { list-style:none; counter-reset:step; }
+        .steps li { counter-increment:step; position:relative; padding-left:38px; margin-bottom:14px; font-size:0.86rem; line-height:1.7; color:var(--text-secondary); }
+        .steps li::before { content:counter(step); position:absolute; left:0; top:1px; width:26px; height:26px; border-radius:8px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:700; color:var(--text-primary); }
+        .steps li strong { color:var(--accent-gold); }
 
-        .steps li {
-            counter-increment: step;
-            position: relative;
-            padding-left: 40px;
-            margin-bottom: 16px;
-            font-size: 0.88rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
-        }
+        .tip-box { margin-top:16px; padding:14px 16px; border-radius:12px; background:rgba(245,166,35,0.08); border:1px solid rgba(245,166,35,0.2); font-size:0.8rem; line-height:1.7; color:var(--text-secondary); }
+        .tip-box .tip-label { display:inline-flex; align-items:center; gap:4px; font-weight:700; color:var(--accent-gold); margin-bottom:2px; }
 
-        .steps li::before {
-            content: counter(step);
-            position: absolute;
-            left: 0;
-            top: 1px;
-            width: 26px;
-            height: 26px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
+        /* Made it button */
+        .made-it-wrap { margin-top:18px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+        .made-it-btn { padding:8px 18px; border-radius:12px; border:1px solid var(--glass-border); background:var(--glass-bg); color:var(--text-secondary); font-size:0.82rem; font-family:inherit; cursor:pointer; transition:all 0.3s; }
+        .made-it-btn:hover { background:rgba(255,255,255,0.1); }
+        .made-it-btn.done { background:rgba(233,69,96,0.15); border-color:rgba(233,69,96,0.3); color:var(--accent-orange); }
+        .made-it-date { font-size:0.72rem; color:var(--text-muted); }
 
-        .steps li strong {
-            color: var(--accent-gold);
-        }
+        .footer-note { position:relative; z-index:1; text-align:center; padding:0 20px 40px; font-size:0.8rem; color:var(--text-muted); }
 
-        /* Tip */
-        .tip-box {
-            margin-top: 20px;
-            padding: 16px 18px;
-            border-radius: 14px;
-            background: rgba(245, 166, 35, 0.08);
-            border: 1px solid rgba(245, 166, 35, 0.2);
-            font-size: 0.82rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
-        }
-
-        .tip-box .tip-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            font-weight: 700;
-            color: var(--accent-gold);
-            margin-bottom: 4px;
-        }
-
-        /* Microwave badge */
-        .microwave-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(0, 210, 211, 0.1);
-            border: 1px solid rgba(0, 210, 211, 0.2);
-            border-radius: 50px;
-            padding: 5px 14px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--accent-green);
-            margin-top: 12px;
-        }
-
-
-
-        /* Footer */
-        .footer-note {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 0 20px 40px;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Responsive */
-        @media (max-width: 680px) {
-            .recipes-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding: 40px 16px 24px;
-            }
-            .card-header {
-                padding: 24px 20px 16px;
-            }
-            .card-body {
-                padding: 0 20px 24px;
-            }
+        @media(max-width:680px){
+            .recipes-container{grid-template-columns:1fr}
+            .hero{padding:40px 16px 20px}
+            .card-header{padding:22px 18px 14px}
+            .card-body{padding:0 18px 20px}
         }
     </style>
 </head>
 <body>
-
-    <!-- Hero -->
     <header class="hero">
         <div class="hero-badge">🍳 Microwave Cooking</div>
         <h1>電子レンジで簡単<br>ヘルシーレシピ</h1>
-        <p class="hero-subtitle">
-            油を最小限に抑えつつ、食材の<strong>栄養も逃がしにくい</strong>電子レンジ調理。<br>
-            厳選した5つの簡単レシピをご紹介します。
-        </p>
+        <p class="hero-subtitle">油を最小限に抑えつつ、食材の<strong>栄養も逃がしにくい</strong>電子レンジ調理。<br>厳選した5つの簡単レシピをご紹介します。</p>
     </header>
 
+    <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" id="searchInput" placeholder="食材やレシピ名で検索...">
+    </div>
 
-
-    <!-- Recipes -->
-    <section class="recipes-container">
+    <section class="recipes-container" id="recipesContainer">
 
         <!-- Recipe 1 -->
-        <article class="recipe-card">
+        <article class="recipe-card" data-recipe-id="r1">
             <div class="card-header">
                 <div class="card-number">1</div>
                 <h2 class="card-title">鶏ささみとキャベツの<br>「酒蒸しポン酢」</h2>
@@ -415,12 +144,18 @@
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
                 <div class="materials-list">
-                    <span class="material-tag">鶏ささみ 2本</span>
-                    <span class="material-tag">キャベツ 2〜3枚</span>
-                    <span class="material-tag">酒 大さじ1</span>
-                    <span class="material-tag">塩 少々</span>
-                    <span class="material-tag">ポン酢</span>
+                    <span class="material-tag" data-qty="2" data-tpl="鶏ささみ {q}本">鶏ささみ 2本</span>
+                    <span class="material-tag" data-qty="2" data-qty2="3" data-tpl="キャベツ {q}〜{q2}枚">キャベツ 2〜3枚</span>
+                    <span class="material-tag" data-qty="1" data-tpl="酒 大さじ{q}">酒 大さじ1</span>
+                    <span class="material-tag" data-noscale>塩 少々</span>
+                    <span class="material-tag" data-noscale>ポン酢</span>
                 </div>
                 <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
                 <ol class="steps">
@@ -428,15 +163,16 @@
                     <li><strong>酒（大さじ1）</strong>と塩少々を振り、ラップをして600Wで<strong>3〜4分</strong>加熱。</li>
                     <li>ささみに火が通ったら、<strong>ポン酢</strong>とお好みで<strong>ラー油や大葉</strong>をかけて完成！</li>
                 </ol>
-                <div class="tip-box">
-                    <div class="tip-label">💡 ポイント</div>
-                    酒を振ることで、ささみがパサつかずしっとり仕上がります。
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>酒を振ることで、ささみがパサつかずしっとり仕上がります。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r1">🍳 作った！</button>
+                    <span class="made-it-date" data-recipe="r1"></span>
                 </div>
             </div>
         </article>
 
         <!-- Recipe 2 -->
-        <article class="recipe-card">
+        <article class="recipe-card" data-recipe-id="r2">
             <div class="card-header">
                 <div class="card-number">2</div>
                 <h2 class="card-title">ナスの<br>「とろとろ煮浸し風」</h2>
@@ -445,11 +181,17 @@
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
                 <div class="materials-list">
-                    <span class="material-tag">ナス 1〜2本</span>
-                    <span class="material-tag">めんつゆ 大さじ1</span>
-                    <span class="material-tag">水 大さじ1</span>
-                    <span class="material-tag">ごま油 小さじ1/2</span>
+                    <span class="material-tag" data-qty="1" data-qty2="2" data-tpl="ナス {q}〜{q2}本">ナス 1〜2本</span>
+                    <span class="material-tag" data-qty="1" data-tpl="めんつゆ 大さじ{q}">めんつゆ 大さじ1</span>
+                    <span class="material-tag" data-qty="1" data-tpl="水 大さじ{q}">水 大さじ1</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="ごま油 小さじ{q}">ごま油 小さじ1/2</span>
                 </div>
                 <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
                 <ol class="steps">
@@ -457,15 +199,16 @@
                     <li><strong>めんつゆ（大さじ1）</strong>、<strong>水（大さじ1）</strong>、<strong>ごま油（小さじ1/2）</strong>を回しかける。</li>
                     <li>ラップをして600Wで<strong>3〜4分</strong>加熱し、少し置いて味を染み込ませれば完成！</li>
                 </ol>
-                <div class="tip-box">
-                    <div class="tip-label">💡 ポイント</div>
-                    加熱直後に一度混ぜると、全体に味が均一に回ります。
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>加熱直後に一度混ぜると、全体に味が均一に回ります。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r2">🍳 作った！</button>
+                    <span class="made-it-date" data-recipe="r2"></span>
                 </div>
             </div>
         </article>
 
         <!-- Recipe 3 -->
-        <article class="recipe-card">
+        <article class="recipe-card" data-recipe-id="r3">
             <div class="card-header">
                 <div class="card-number">3</div>
                 <h2 class="card-title">もやしと豚バラの<br>「重ね蒸し」</h2>
@@ -474,10 +217,16 @@
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
                 <div class="materials-list">
-                    <span class="material-tag">もやし 1袋</span>
-                    <span class="material-tag">豚バラ肉 50〜80g</span>
-                    <span class="material-tag">塩コショウ</span>
+                    <span class="material-tag" data-qty="1" data-tpl="もやし {q}袋">もやし 1袋</span>
+                    <span class="material-tag" data-qty="50" data-qty2="80" data-tpl="豚バラ肉 {q}〜{q2}g">豚バラ肉 50〜80g</span>
+                    <span class="material-tag" data-noscale>塩コショウ</span>
                 </div>
                 <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
                 <ol class="steps">
@@ -485,15 +234,16 @@
                     <li>塩コショウを振り、ラップをして600Wで<strong>4〜5分</strong>（肉の色が変わるまで）加熱。</li>
                     <li>お好みで<strong>ポン酢</strong>や<strong>ごまドレッシング</strong>でどうぞ。</li>
                 </ol>
-                <div class="tip-box">
-                    <div class="tip-label">💡 ポイント</div>
-                    もやしの水分で肉が蒸されるので、驚くほど柔らかくなります。
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>もやしの水分で肉が蒸されるので、驚くほど柔らかくなります。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r3">🍳 作った！</button>
+                    <span class="made-it-date" data-recipe="r3"></span>
                 </div>
             </div>
         </article>
 
         <!-- Recipe 4 -->
-        <article class="recipe-card">
+        <article class="recipe-card" data-recipe-id="r4">
             <div class="card-header">
                 <div class="card-number">4</div>
                 <h2 class="card-title">きのことブロッコリーの<br>「ガリバタ醤油蒸し」</h2>
@@ -502,13 +252,19 @@
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
                 <div class="materials-list">
-                    <span class="material-tag">ブロッコリー 1/2株</span>
-                    <span class="material-tag">きのこ 1/2パック</span>
-                    <span class="material-tag">醤油 小さじ1</span>
-                    <span class="material-tag">バター 5g</span>
-                    <span class="material-tag">にんにくチューブ 1cm</span>
-                    <span class="material-tag">塩コショウ 少々</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="ブロッコリー {q}株">ブロッコリー 1/2株</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="きのこ {q}パック">きのこ 1/2パック</span>
+                    <span class="material-tag" data-qty="1" data-tpl="醤油 小さじ{q}">醤油 小さじ1</span>
+                    <span class="material-tag" data-qty="5" data-tpl="バター {q}g">バター 5g</span>
+                    <span class="material-tag" data-qty="1" data-tpl="にんにくチューブ {q}cm">にんにくチューブ 1cm</span>
+                    <span class="material-tag" data-noscale>塩コショウ 少々</span>
                 </div>
                 <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
                 <ol class="steps">
@@ -516,15 +272,16 @@
                     <li>電子レンジ600Wで<strong>約3分</strong>加熱する。</li>
                     <li>熱いうちに調味料をすべて入れ、<strong>バターを溶かしながら</strong>全体を和えれば完成！</li>
                 </ol>
-                <div class="tip-box">
-                    <div class="tip-label">💡 ポイント</div>
-                    ブロッコリーの固さに合わせて30秒ずつ加熱時間を調整。冷凍ブロッコリーでもOKです。
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>ブロッコリーの固さに合わせて30秒ずつ加熱時間を調整。冷凍ブロッコリーでもOKです。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r4">🍳 作った！</button>
+                    <span class="made-it-date" data-recipe="r4"></span>
                 </div>
             </div>
         </article>
 
         <!-- Recipe 5 -->
-        <article class="recipe-card">
+        <article class="recipe-card" data-recipe-id="r5">
             <div class="card-header">
                 <div class="card-number">5</div>
                 <h2 class="card-title">無限きのこブロッコリー<br>「ナムル風」</h2>
@@ -533,12 +290,18 @@
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
                 <div class="materials-list">
-                    <span class="material-tag">ブロッコリー 1/2株</span>
-                    <span class="material-tag">きのこ 1/2パック</span>
-                    <span class="material-tag">ごま油 小さじ1</span>
-                    <span class="material-tag">鶏ガラスープの素 小さじ1/2</span>
-                    <span class="material-tag">いりごま 少々</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="ブロッコリー {q}株">ブロッコリー 1/2株</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="きのこ {q}パック">きのこ 1/2パック</span>
+                    <span class="material-tag" data-qty="1" data-tpl="ごま油 小さじ{q}">ごま油 小さじ1</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="鶏ガラスープの素 小さじ{q}">鶏ガラスープの素 小さじ1/2</span>
+                    <span class="material-tag" data-noscale>いりごま 少々</span>
                 </div>
                 <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
                 <ol class="steps">
@@ -546,20 +309,125 @@
                     <li>電子レンジ600Wで<strong>約3分</strong>加熱する。</li>
                     <li>水気を軽く切り、<strong>調味料を和える</strong>だけで完成！</li>
                 </ol>
-                <div class="tip-box">
-                    <div class="tip-label">💡 ポイント</div>
-                    冷凍ブロッコリーを使う場合は、解凍してから水分をよく拭き取ると水っぽくなりません。
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>冷凍ブロッコリーを使う場合は、解凍してから水分をよく拭き取ると水っぽくなりません。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r5">🍳 作った！</button>
+                    <span class="made-it-date" data-recipe="r5"></span>
                 </div>
             </div>
         </article>
-
     </section>
-
-
 
     <footer class="footer-note">
         <p>🌿 電子レンジで簡単・ヘルシー・美味しい毎日を。</p>
     </footer>
 
+<script>
+// === Format quantity for display ===
+function fmtQty(n) {
+    if (Number.isInteger(n)) return String(n);
+    const fracs = [[0.5,'1/2'],[0.25,'1/4'],[0.75,'3/4'],[0.33,'1/3'],[0.67,'2/3']];
+    const whole = Math.floor(n);
+    const dec = +(n - whole).toFixed(2);
+    for (const [v, s] of fracs) {
+        if (Math.abs(dec - v) < 0.01) return whole > 0 ? whole + 'と' + s : s;
+    }
+    return n % 1 === 0 ? String(n) : n.toFixed(1).replace(/\.0$/, '');
+}
+
+// === Serving size calculator ===
+document.querySelectorAll('.serving-selector').forEach(sel => {
+    sel.querySelectorAll('.serving-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            sel.querySelectorAll('.serving-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const mult = parseInt(btn.dataset.servings);
+            const card = sel.closest('.recipe-card');
+            card.querySelectorAll('.material-tag').forEach(tag => {
+                if (tag.hasAttribute('data-noscale')) return;
+                const base = parseFloat(tag.dataset.qty);
+                const tpl = tag.dataset.tpl;
+                let text = tpl.replace('{q}', fmtQty(base * mult));
+                if (tag.dataset.qty2) {
+                    text = text.replace('{q2}', fmtQty(parseFloat(tag.dataset.qty2) * mult));
+                }
+                // Preserve checked state
+                const isChecked = tag.classList.contains('checked');
+                tag.textContent = text;
+                if (isChecked) tag.classList.add('checked');
+            });
+        });
+    });
+});
+
+// === Shopping checklist ===
+function loadChecked() {
+    try { return JSON.parse(localStorage.getItem('cook_checked') || '{}'); } catch { return {}; }
+}
+function saveChecked(data) { localStorage.setItem('cook_checked', JSON.stringify(data)); }
+
+document.querySelectorAll('.material-tag').forEach((tag, i) => {
+    const card = tag.closest('.recipe-card');
+    const rid = card.dataset.recipeId;
+    const key = rid + '_' + i;
+    const data = loadChecked();
+    if (data[key]) tag.classList.add('checked');
+
+    tag.addEventListener('click', () => {
+        tag.classList.toggle('checked');
+        const d = loadChecked();
+        d[key] = tag.classList.contains('checked');
+        saveChecked(d);
+    });
+});
+
+// === Made it button ===
+function loadMade() {
+    try { return JSON.parse(localStorage.getItem('cook_made') || '{}'); } catch { return {}; }
+}
+function saveMade(data) { localStorage.setItem('cook_made', JSON.stringify(data)); }
+
+function updateMadeUI() {
+    const data = loadMade();
+    document.querySelectorAll('.made-it-btn').forEach(btn => {
+        const rid = btn.dataset.recipe;
+        const dateEl = btn.parentElement.querySelector('.made-it-date');
+        if (data[rid]) {
+            btn.classList.add('done');
+            btn.textContent = '✅ 作った！';
+            const d = new Date(data[rid]);
+            dateEl.textContent = '最後: ' + (d.getMonth()+1) + '/' + d.getDate();
+        }
+    });
+}
+updateMadeUI();
+
+document.querySelectorAll('.made-it-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const rid = btn.dataset.recipe;
+        const data = loadMade();
+        data[rid] = new Date().toISOString();
+        saveMade(data);
+        btn.classList.add('done');
+        btn.textContent = '✅ 作った！';
+        const dateEl = btn.parentElement.querySelector('.made-it-date');
+        const d = new Date();
+        dateEl.textContent = '最後: ' + (d.getMonth()+1) + '/' + d.getDate();
+        btn.style.transform = 'scale(1.15)';
+        setTimeout(() => btn.style.transform = '', 200);
+    });
+});
+
+// === Search / Filter ===
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+    document.querySelectorAll('.recipe-card').forEach(card => {
+        if (!q) { card.classList.remove('hidden'); return; }
+        const text = card.textContent.toLowerCase();
+        card.classList.toggle('hidden', !text.includes(q));
+    });
+});
+</script>
 </body>
 </html>
