@@ -53,7 +53,7 @@
         /* Recipes */
         .recipes-container { position:relative; z-index:1; max-width:1100px; margin:0 auto; padding:0 20px 60px; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:28px; }
         .recipe-card { background:var(--glass-bg); backdrop-filter:blur(20px); border:1px solid var(--glass-border); border-radius:24px; overflow:hidden; transition:transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275),box-shadow 0.4s ease; animation:fadeInUp 0.7s ease both; position:relative; }
-        .recipe-card:nth-child(1){animation-delay:0.1s} .recipe-card:nth-child(2){animation-delay:0.2s} .recipe-card:nth-child(3){animation-delay:0.3s} .recipe-card:nth-child(4){animation-delay:0.4s} .recipe-card:nth-child(5){animation-delay:0.5s}
+        .recipe-card:nth-child(1){animation-delay:0.1s} .recipe-card:nth-child(2){animation-delay:0.15s} .recipe-card:nth-child(3){animation-delay:0.2s} .recipe-card:nth-child(4){animation-delay:0.25s} .recipe-card:nth-child(5){animation-delay:0.3s} .recipe-card:nth-child(6){animation-delay:0.35s} .recipe-card:nth-child(7){animation-delay:0.4s} .recipe-card:nth-child(8){animation-delay:0.45s} .recipe-card:nth-child(9){animation-delay:0.5s} .recipe-card:nth-child(10){animation-delay:0.55s} .recipe-card:nth-child(11){animation-delay:0.6s} .recipe-card:nth-child(12){animation-delay:0.65s}
         .recipe-card:hover { transform:translateY(-6px) scale(1.01); box-shadow:0 20px 60px rgba(0,0,0,0.4); }
         .recipe-card.hidden { display:none; }
 
@@ -64,6 +64,13 @@
         .recipe-card:nth-child(3) .card-header::before{background:linear-gradient(135deg,var(--accent-green),var(--accent-gold))}
         .recipe-card:nth-child(4) .card-header::before{background:linear-gradient(135deg,var(--accent-gold),var(--accent-orange))}
         .recipe-card:nth-child(5) .card-header::before{background:linear-gradient(135deg,var(--accent-green),var(--accent-purple))}
+        .recipe-card:nth-child(6) .card-header::before{background:linear-gradient(135deg,var(--accent-purple),var(--accent-gold))}
+        .recipe-card:nth-child(7) .card-header::before{background:linear-gradient(135deg,var(--accent-orange),var(--accent-green))}
+        .recipe-card:nth-child(8) .card-header::before{background:linear-gradient(135deg,var(--accent-gold),var(--accent-purple))}
+        .recipe-card:nth-child(9) .card-header::before{background:linear-gradient(135deg,var(--accent-green),var(--accent-orange))}
+        .recipe-card:nth-child(10) .card-header::before{background:linear-gradient(135deg,var(--accent-purple),var(--accent-orange))}
+        .recipe-card:nth-child(11) .card-header::before{background:linear-gradient(135deg,var(--accent-gold),var(--accent-green))}
+        .recipe-card:nth-child(12) .card-header::before{background:linear-gradient(135deg,var(--accent-orange),var(--accent-purple))}
 
         .card-number { position:relative; z-index:1; display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:12px; font-weight:900; font-size:0.9rem; margin-bottom:10px; }
         .recipe-card:nth-child(1) .card-number{background:linear-gradient(135deg,var(--accent-orange),var(--accent-gold))}
@@ -71,6 +78,13 @@
         .recipe-card:nth-child(3) .card-number{background:linear-gradient(135deg,var(--accent-green),var(--accent-gold))}
         .recipe-card:nth-child(4) .card-number{background:linear-gradient(135deg,var(--accent-gold),var(--accent-orange))}
         .recipe-card:nth-child(5) .card-number{background:linear-gradient(135deg,var(--accent-green),var(--accent-purple))}
+        .recipe-card:nth-child(6) .card-number{background:linear-gradient(135deg,var(--accent-purple),var(--accent-gold))}
+        .recipe-card:nth-child(7) .card-number{background:linear-gradient(135deg,var(--accent-orange),var(--accent-green))}
+        .recipe-card:nth-child(8) .card-number{background:linear-gradient(135deg,var(--accent-gold),var(--accent-purple))}
+        .recipe-card:nth-child(9) .card-number{background:linear-gradient(135deg,var(--accent-green),var(--accent-orange))}
+        .recipe-card:nth-child(10) .card-number{background:linear-gradient(135deg,var(--accent-purple),var(--accent-orange))}
+        .recipe-card:nth-child(11) .card-number{background:linear-gradient(135deg,var(--accent-gold),var(--accent-green))}
+        .recipe-card:nth-child(12) .card-number{background:linear-gradient(135deg,var(--accent-orange),var(--accent-purple))}
 
         .card-title { position:relative; z-index:1; font-family:'M PLUS Rounded 1c',sans-serif; font-size:1.25rem; font-weight:700; line-height:1.4; margin-bottom:6px; }
         .card-subtitle { position:relative; z-index:1; font-size:0.82rem; color:var(--text-secondary); line-height:1.6; }
@@ -124,7 +138,7 @@
     <header class="hero">
         <div class="hero-badge">🍳 Microwave Cooking</div>
         <h1>電子レンジで簡単<br>ヘルシーレシピ</h1>
-        <p class="hero-subtitle">油を最小限に抑えつつ、食材の<strong>栄養も逃がしにくい</strong>電子レンジ調理。<br>厳選した5つの簡単レシピをご紹介します。</p>
+        <p class="hero-subtitle">油を最小限に抑えつつ、食材の<strong>栄養も逃がしにくい</strong>電子レンジ調理。<br>厳選した12の簡単レシピをご紹介します。</p>
     </header>
 
     <div class="search-wrap">
@@ -316,6 +330,263 @@
                 </div>
             </div>
         </article>
+
+        <!-- Recipe 6 -->
+        <article class="recipe-card" data-recipe-id="r6">
+            <div class="card-header">
+                <div class="card-number">6</div>
+                <h2 class="card-title">白菜と豚肉の<br>「ミルフィーユ蒸し」</h2>
+                <p class="card-subtitle">白菜の水分だけで蒸すからヘルシー。見た目も華やか。</p>
+                <div class="microwave-badge">⚡ 600W ・ 5〜6分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
+                <div class="materials-list">
+                    <span class="material-tag" data-qty="3" data-tpl="白菜 {q}枚">白菜 3枚</span>
+                    <span class="material-tag" data-qty="100" data-tpl="豚薄切り肉 {q}g">豚薄切り肉 100g</span>
+                    <span class="material-tag" data-noscale>塩コショウ 少々</span>
+                    <span class="material-tag" data-noscale>ポン酢</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>白菜と豚肉を交互に<strong>3〜4層</strong>重ね、5cm幅に切って耐熱皿に並べる。</li>
+                    <li>塩コショウを振り、ラップをして600Wで<strong>5〜6分</strong>加熱。</li>
+                    <li><strong>ポン酢</strong>をかけて完成！お好みで柚子胡椒を添えても◎</li>
+                </ol>
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>白菜の芯の部分を下にすると均一に火が通ります。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r6">🍳 作った！</button>
+                    <span class="made-it-date" data-recipe="r6"></span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 7 -->
+        <article class="recipe-card" data-recipe-id="r7">
+            <div class="card-header">
+                <div class="card-number">7</div>
+                <h2 class="card-title">ほうれん草の<br>「レンジ胡麻和え」</h2>
+                <p class="card-subtitle">鉄分・ビタミン豊富。副菜にぴったりの定番メニュー。</p>
+                <div class="microwave-badge">⚡ 600W ・ 約2分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
+                <div class="materials-list">
+                    <span class="material-tag" data-qty="0.5" data-tpl="ほうれん草 {q}束">ほうれん草 1/2束</span>
+                    <span class="material-tag" data-qty="1" data-tpl="めんつゆ 大さじ{q}">めんつゆ 大さじ1</span>
+                    <span class="material-tag" data-qty="1" data-tpl="すりごま 大さじ{q}">すりごま 大さじ1</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="砂糖 小さじ{q}">砂糖 小さじ1/2</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>ほうれん草を4cm幅に切り、耐熱容器に入れてラップをする。</li>
+                    <li>600Wで<strong>約2分</strong>加熱し、冷水にとって水気をしっかり絞る。</li>
+                    <li><strong>めんつゆ・すりごま・砂糖</strong>を混ぜて和えれば完成！</li>
+                </ol>
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>水気をしっかり絞ることで味がぼやけません。冷凍ほうれん草でもOK。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r7">🍳 作った！</button>
+                    <span class="made-it-date" data-recipe="r7"></span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 8 -->
+        <article class="recipe-card" data-recipe-id="r8">
+            <div class="card-header">
+                <div class="card-number">8</div>
+                <h2 class="card-title">かぼちゃの<br>「レンジ煮」</h2>
+                <p class="card-subtitle">ホクホクで甘い。作り置きにも最適な副菜。</p>
+                <div class="microwave-badge">⚡ 600W ・ 4〜5分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
+                <div class="materials-list">
+                    <span class="material-tag" data-qty="150" data-tpl="かぼちゃ {q}g">かぼちゃ 150g</span>
+                    <span class="material-tag" data-qty="1" data-tpl="めんつゆ 大さじ{q}">めんつゆ 大さじ1</span>
+                    <span class="material-tag" data-qty="2" data-tpl="水 大さじ{q}">水 大さじ2</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>かぼちゃを一口大に切り、耐熱容器に皮を下にして並べる。</li>
+                    <li><strong>めんつゆ</strong>と<strong>水</strong>を回しかけ、ラップをして600Wで<strong>4〜5分</strong>加熱。</li>
+                    <li>竹串がスッと通ればOK。そのまま少し置いて味を染み込ませて完成！</li>
+                </ol>
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>皮を下にすると煮崩れしにくくなります。冷蔵で3日ほど保存可能。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r8">🍳 作った！</button>
+                    <span class="made-it-date" data-recipe="r8"></span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 9 -->
+        <article class="recipe-card" data-recipe-id="r9">
+            <div class="card-header">
+                <div class="card-number">9</div>
+                <h2 class="card-title">豆腐の<br>「レンジ麻婆風」</h2>
+                <p class="card-subtitle">混ぜてチンするだけ。ご飯にかけても美味しい！</p>
+                <div class="microwave-badge">⚡ 600W ・ 3〜4分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
+                <div class="materials-list">
+                    <span class="material-tag" data-qty="150" data-tpl="豆腐 {q}g">豆腐 150g</span>
+                    <span class="material-tag" data-qty="50" data-tpl="豚ひき肉 {q}g">豚ひき肉 50g</span>
+                    <span class="material-tag" data-qty="1" data-tpl="焼肉のタレ 大さじ{q}">焼肉のタレ 大さじ1</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="豆板醤 小さじ{q}">豆板醤 小さじ1/2</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="片栗粉 小さじ{q}">片栗粉 小さじ1/2</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>耐熱容器にひき肉・焼肉のタレ・豆板醤・片栗粉を入れてよく混ぜる。</li>
+                    <li>一口大に切った豆腐を加え、ラップをして600Wで<strong>3〜4分</strong>加熱。</li>
+                    <li>軽く混ぜて、お好みで<strong>ネギやラー油</strong>をトッピングして完成！</li>
+                </ol>
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>豆腐は木綿がおすすめ。崩れにくく食べごたえがあります。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r9">🍳 作った！</button>
+                    <span class="made-it-date" data-recipe="r9"></span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 10 -->
+        <article class="recipe-card" data-recipe-id="r10">
+            <div class="card-header">
+                <div class="card-number">10</div>
+                <h2 class="card-title">鶏むね肉の<br>「よだれ鶏風」</h2>
+                <p class="card-subtitle">高タンパク・低脂質の王道。ピリ辛ダレが絶品。</p>
+                <div class="microwave-badge">⚡ 600W ・ 約4分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
+                <div class="materials-list">
+                    <span class="material-tag" data-qty="1" data-tpl="鶏むね肉 {q}枚(150g)">鶏むね肉 1枚(150g)</span>
+                    <span class="material-tag" data-qty="1" data-tpl="酒 大さじ{q}">酒 大さじ1</span>
+                    <span class="material-tag" data-qty="1" data-tpl="ポン酢 大さじ{q}">ポン酢 大さじ1</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="ラー油 小さじ{q}">ラー油 小さじ1/2</span>
+                    <span class="material-tag" data-noscale>塩 少々</span>
+                    <span class="material-tag" data-noscale>ねぎ（小口切り）</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>鶏むね肉にフォークで穴を開け、<strong>酒と塩</strong>を振ってラップをする。</li>
+                    <li>600Wで<strong>約4分</strong>加熱し、そのまま5分余熱で火を通す。</li>
+                    <li>薄くスライスし、<strong>ポン酢+ラー油+ねぎ</strong>のタレをかけて完成！</li>
+                </ol>
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>余熱で火を通すことでパサつかずしっとり仕上がります。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r10">🍳 作った！</button>
+                    <span class="made-it-date" data-recipe="r10"></span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 11 -->
+        <article class="recipe-card" data-recipe-id="r11">
+            <div class="card-header">
+                <div class="card-number">11</div>
+                <h2 class="card-title">卵と小松菜の<br>「中華風蒸し」</h2>
+                <p class="card-subtitle">ふんわり卵と小松菜の組み合わせ。朝ごはんにも◎</p>
+                <div class="microwave-badge">⚡ 600W ・ 2〜3分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
+                <div class="materials-list">
+                    <span class="material-tag" data-qty="2" data-tpl="卵 {q}個">卵 2個</span>
+                    <span class="material-tag" data-qty="1" data-tpl="小松菜 {q}株">小松菜 1株</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="鶏ガラスープの素 小さじ{q}">鶏ガラスープの素 小さじ1/2</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="ごま油 小さじ{q}">ごま油 小さじ1/2</span>
+                    <span class="material-tag" data-noscale>塩コショウ 少々</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>小松菜を3cm幅に切り、耐熱容器に入れる。</li>
+                    <li>溶き卵に<strong>鶏ガラスープの素・ごま油・塩コショウ</strong>を混ぜて注ぎ入れる。</li>
+                    <li>ラップをして600Wで<strong>2〜3分</strong>、卵がふんわり固まれば完成！</li>
+                </ol>
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>加熱しすぎると卵が固くなるので、少し半熟くらいで止めるのがコツ。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r11">🍳 作った！</button>
+                    <span class="made-it-date" data-recipe="r11"></span>
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 12 -->
+        <article class="recipe-card" data-recipe-id="r12">
+            <div class="card-header">
+                <div class="card-number">12</div>
+                <h2 class="card-title">鮭の<br>「味噌マヨ蒸し」</h2>
+                <p class="card-subtitle">魚もレンジなら簡単！味噌マヨのコクが絶品。</p>
+                <div class="microwave-badge">⚡ 600W ・ 約4分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="serving-selector">
+                    <span class="serving-label">人数:</span>
+                    <button class="serving-btn active" data-servings="1">1人分</button>
+                    <button class="serving-btn" data-servings="2">2人分</button>
+                    <button class="serving-btn" data-servings="3">3人分</button>
+                </div>
+                <div class="materials-list">
+                    <span class="material-tag" data-qty="1" data-tpl="鮭切り身 {q}切れ">鮭切り身 1切れ</span>
+                    <span class="material-tag" data-qty="2" data-tpl="キャベツ {q}枚">キャベツ 2枚</span>
+                    <span class="material-tag" data-qty="0.5" data-tpl="きのこ {q}パック">きのこ 1/2パック</span>
+                    <span class="material-tag" data-qty="1" data-tpl="味噌 小さじ{q}">味噌 小さじ1</span>
+                    <span class="material-tag" data-qty="1" data-tpl="マヨネーズ 大さじ{q}">マヨネーズ 大さじ1</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>耐熱皿にざく切りキャベツときのこを敷き、鮭をのせる。</li>
+                    <li><strong>味噌+マヨネーズ</strong>を混ぜて鮭の上に塗り、ラップをして600Wで<strong>約4分</strong>加熱。</li>
+                    <li>鮭に火が通れば完成！お好みで<strong>七味唐辛子</strong>を振っても◎</li>
+                </ol>
+                <div class="tip-box"><div class="tip-label">💡 ポイント</div>鮭の厚みによって加熱時間を調整。生鮭でも塩鮭でもOKです。</div>
+                <div class="made-it-wrap">
+                    <button class="made-it-btn" data-recipe="r12">🍳 作った！</button>
+                    <span class="made-it-date" data-recipe="r12"></span>
+                </div>
+            </div>
+        </article>
+
     </section>
 
     <footer class="footer-note">
