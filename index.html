@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電子レンジで簡単ヘルシーレシピ</title>
+    <meta name="description" content="電子レンジだけで作れる簡単ヘルシーレシピ集。ささみ酒蒸し、ナス煮浸し、もやし豚バラ蒸しなど。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=M+PLUS+Rounded+1c:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #16213e;
+            --bg-card: #0f3460;
+            --accent-orange: #e94560;
+            --accent-gold: #f5a623;
+            --accent-green: #00d2d3;
+            --accent-purple: #a855f7;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b0c0;
+            --text-muted: #7a7a8e;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(233, 69, 96, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 210, 211, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+            animation: bgFloat 20s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes bgFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(2%, -2%) rotate(1deg); }
+            66% { transform: translate(-1%, 1%) rotate(-1deg); }
+        }
+
+        /* Header */
+        .hero {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-gold));
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 18px;
+            border-radius: 50px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            animation: fadeInDown 0.6s ease;
+        }
+
+        .hero h1 {
+            font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-green) 50%, var(--accent-gold) 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease-in-out infinite;
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .hero-subtitle strong {
+            color: var(--accent-gold);
+        }
+
+        /* Intro section */
+        .intro {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+        }
+
+        .intro-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 28px 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .intro-card p {
+            font-size: 0.9rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+        }
+
+        .intro-card .highlight {
+            color: var(--accent-green);
+            font-weight: 500;
+        }
+
+        /* Recipe grid */
+        .recipes-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+        }
+
+        /* Recipe card */
+        .recipe-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            animation: fadeInUp 0.7s ease both;
+            position: relative;
+        }
+
+        .recipe-card:nth-child(1) { animation-delay: 0.1s; }
+        .recipe-card:nth-child(2) { animation-delay: 0.25s; }
+        .recipe-card:nth-child(3) { animation-delay: 0.4s; }
+
+        .recipe-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Card header with gradient */
+        .card-header {
+            position: relative;
+            padding: 32px 28px 20px;
+            overflow: hidden;
+        }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .recipe-card:nth-child(1) .card-header::before {
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-gold));
+        }
+        .recipe-card:nth-child(2) .card-header::before {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-green));
+        }
+        .recipe-card:nth-child(3) .card-header::before {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-gold));
+        }
+
+        .card-number {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            font-weight: 900;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .recipe-card:nth-child(1) .card-number {
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-gold));
+        }
+        .recipe-card:nth-child(2) .card-number {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-green));
+        }
+        .recipe-card:nth-child(3) .card-number {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-gold));
+        }
+
+        .card-title {
+            position: relative;
+            z-index: 1;
+            font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .card-subtitle {
+            position: relative;
+            z-index: 1;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Card body */
+        .card-body {
+            padding: 0 28px 28px;
+        }
+
+        /* Materials */
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .section-label .icon {
+            font-size: 0.9rem;
+        }
+
+        .materials-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .material-tag {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 6px 14px;
+            font-size: 0.82rem;
+            color: var(--text-primary);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .material-tag:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: scale(1.05);
+        }
+
+        /* Steps */
+        .steps {
+            list-style: none;
+            counter-reset: step;
+        }
+
+        .steps li {
+            counter-increment: step;
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 16px;
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 1px;
+            width: 26px;
+            height: 26px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .steps li strong {
+            color: var(--accent-gold);
+        }
+
+        /* Tip */
+        .tip-box {
+            margin-top: 20px;
+            padding: 16px 18px;
+            border-radius: 14px;
+            background: rgba(245, 166, 35, 0.08);
+            border: 1px solid rgba(245, 166, 35, 0.2);
+            font-size: 0.82rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        .tip-box .tip-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 4px;
+        }
+
+        /* Microwave badge */
+        .microwave-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(0, 210, 211, 0.1);
+            border: 1px solid rgba(0, 210, 211, 0.2);
+            border-radius: 50px;
+            padding: 5px 14px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--accent-green);
+            margin-top: 12px;
+        }
+
+        /* Combination section */
+        .combo-section {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+
+        .combo-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+        }
+
+        .combo-card h2 {
+            font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .combo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .combo-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 18px 20px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .combo-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .combo-item .when {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-green);
+            margin-bottom: 6px;
+        }
+
+        .combo-item .recommend {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .combo-item .recommend strong {
+            color: var(--text-primary);
+        }
+
+        /* Footer */
+        .footer-note {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 0 20px 40px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 680px) {
+            .recipes-container {
+                grid-template-columns: 1fr;
+            }
+            .combo-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding: 40px 16px 24px;
+            }
+            .card-header {
+                padding: 24px 20px 16px;
+            }
+            .card-body {
+                padding: 0 20px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-badge">🍳 Microwave Cooking</div>
+        <h1>電子レンジで簡単<br>ヘルシーレシピ</h1>
+        <p class="hero-subtitle">
+            油を最小限に抑えつつ、食材の<strong>栄養も逃がしにくい</strong>電子レンジ調理。<br>
+            厳選した3つの簡単レシピをご紹介します。
+        </p>
+    </header>
+
+    <!-- Intro -->
+    <section class="intro">
+        <div class="intro-card">
+            <p>
+                「ガリバタ醤油蒸し」、美味しく召し上がっていただけて良かったです！きのこの旨味とバター醤油は鉄板ですよね。
+                電子レンジ調理は<span class="highlight">「蒸す」</span>状態になるので、油を最小限に抑えつつ、食材の栄養も逃がしにくいのがヘルシーなポイントです。
+            </p>
+        </div>
+    </section>
+
+    <!-- Recipes -->
+    <section class="recipes-container">
+
+        <!-- Recipe 1 -->
+        <article class="recipe-card">
+            <div class="card-header">
+                <div class="card-number">1</div>
+                <h2 class="card-title">鶏ささみとキャベツの<br>「酒蒸しポン酢」</h2>
+                <p class="card-subtitle">高タンパク・低カロリーの王道。キャベツの甘みが引き立ちます。</p>
+                <div class="microwave-badge">⚡ 600W ・ 3〜4分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="materials-list">
+                    <span class="material-tag">鶏ささみ 2本</span>
+                    <span class="material-tag">キャベツ 2〜3枚</span>
+                    <span class="material-tag">酒 大さじ1</span>
+                    <span class="material-tag">塩 少々</span>
+                    <span class="material-tag">ポン酢</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>耐熱皿にざく切りキャベツを敷き、筋を取って一口大に切ったささみをのせる。</li>
+                    <li><strong>酒（大さじ1）</strong>と塩少々を振り、ラップをして600Wで<strong>3〜4分</strong>加熱。</li>
+                    <li>ささみに火が通ったら、<strong>ポン酢</strong>とお好みで<strong>ラー油や大葉</strong>をかけて完成！</li>
+                </ol>
+                <div class="tip-box">
+                    <div class="tip-label">💡 ポイント</div>
+                    酒を振ることで、ささみがパサつかずしっとり仕上がります。
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 2 -->
+        <article class="recipe-card">
+            <div class="card-header">
+                <div class="card-number">2</div>
+                <h2 class="card-title">ナスの<br>「とろとろ煮浸し風」</h2>
+                <p class="card-subtitle">揚げていないので大幅にカロリーカット。味がしみしみで絶品。</p>
+                <div class="microwave-badge">⚡ 600W ・ 3〜4分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="materials-list">
+                    <span class="material-tag">ナス 1〜2本</span>
+                    <span class="material-tag">めんつゆ 大さじ1</span>
+                    <span class="material-tag">水 大さじ1</span>
+                    <span class="material-tag">ごま油 小さじ1/2</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>ナスを細長めの乱切りにし、サッと水にくぐらせて耐熱容器に入れる。</li>
+                    <li><strong>めんつゆ（大さじ1）</strong>、<strong>水（大さじ1）</strong>、<strong>ごま油（小さじ1/2）</strong>を回しかける。</li>
+                    <li>ラップをして600Wで<strong>3〜4分</strong>加熱し、少し置いて味を染み込ませれば完成！</li>
+                </ol>
+                <div class="tip-box">
+                    <div class="tip-label">💡 ポイント</div>
+                    加熱直後に一度混ぜると、全体に味が均一に回ります。
+                </div>
+            </div>
+        </article>
+
+        <!-- Recipe 3 -->
+        <article class="recipe-card">
+            <div class="card-header">
+                <div class="card-number">3</div>
+                <h2 class="card-title">もやしと豚バラの<br>「重ね蒸し」</h2>
+                <p class="card-subtitle">包丁いらず！安くて早くて満足度が高い一品。</p>
+                <div class="microwave-badge">⚡ 600W ・ 4〜5分</div>
+            </div>
+            <div class="card-body">
+                <div class="section-label"><span class="icon">🥘</span> 材料</div>
+                <div class="materials-list">
+                    <span class="material-tag">もやし 1袋</span>
+                    <span class="material-tag">豚バラ肉 50〜80g</span>
+                    <span class="material-tag">塩コショウ</span>
+                </div>
+                <div class="section-label"><span class="icon">👨‍🍳</span> 作り方</div>
+                <ol class="steps">
+                    <li>耐熱皿にもやしを広げ、豚バラ肉を重ならないように広げてのせる。</li>
+                    <li>塩コショウを振り、ラップをして600Wで<strong>4〜5分</strong>（肉の色が変わるまで）加熱。</li>
+                    <li>お好みで<strong>ポン酢</strong>や<strong>ごまドレッシング</strong>でどうぞ。</li>
+                </ol>
+                <div class="tip-box">
+                    <div class="tip-label">💡 ポイント</div>
+                    もやしの水分で肉が蒸されるので、驚くほど柔らかくなります。
+                </div>
+            </div>
+        </article>
+
+    </section>
+
+    <!-- Combination -->
+    <section class="combo-section">
+        <div class="combo-card">
+            <h2>🍽️ 組み合わせてさらにヘルシーに！</h2>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.7;">
+                どれも<strong style="color: var(--accent-gold);">「アイリスオーヤマの圧力鍋で作った具だくさんスープ」</strong>とも相性抜群です。
+            </p>
+            <div class="combo-grid">
+                <div class="combo-item">
+                    <div class="when">主食を抑えたい時</div>
+                    <p class="recommend">🍆 <strong>ナスの煮浸し</strong>がおすすめ</p>
+                </div>
+                <div class="combo-item">
+                    <div class="when">タンパク質をしっかり</div>
+                    <p class="recommend">🥩 <strong>ささみキャベツ</strong>や<strong>もやし豚</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-note">
+        <p>🌿 電子レンジで簡単・ヘルシー・美味しい毎日を。</p>
+    </footer>
+
+</body>
+</html>
