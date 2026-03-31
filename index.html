@@ -167,8 +167,8 @@
     </div>
     <div class="sort-wrap">
         <span class="sort-label">並び替え:</span>
-        <button class="sort-btn active" id="sortDefault">番号順</button>
-        <button class="sort-btn" id="sortCount">作った回数順</button>
+        <button class="sort-btn" id="sortDefault">番号順</button>
+        <button class="sort-btn active" id="sortCount">作った回数順</button>
     </div>
 
     <section class="recipes-container" id="recipesContainer">
@@ -973,6 +973,9 @@ sortCountBtn.addEventListener('click', () => {
     sortCountBtn.classList.add('active'); sortDefaultBtn.classList.remove('active');
     sortCards('count');
 });
+
+// Sort by count on page load
+sortCards('count');
 
 // === Search / Filter ===
 const searchInput = document.getElementById('searchInput');
