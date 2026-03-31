@@ -109,6 +109,7 @@
         .card-title { position:relative; z-index:1; font-family:'M PLUS Rounded 1c',sans-serif; font-size:1.25rem; font-weight:700; line-height:1.4; margin-bottom:6px; }
         .card-subtitle { position:relative; z-index:1; font-size:0.82rem; color:var(--text-secondary); line-height:1.6; }
         .microwave-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(0,210,211,0.1); border:1px solid rgba(0,210,211,0.2); border-radius:50px; padding:5px 14px; font-size:0.75rem; font-weight:500; color:var(--accent-green); margin-top:10px; }
+        .calorie-badge { display:inline-flex; align-items:center; gap:6px; background:rgba(245,166,35,0.1); border:1px solid rgba(245,166,35,0.2); border-radius:50px; padding:5px 14px; font-size:0.75rem; font-weight:500; color:var(--accent-gold); margin-top:10px; margin-left:6px; }
 
         .card-body { padding:0 24px 24px; }
         .section-label { display:inline-flex; align-items:center; gap:6px; font-size:0.72rem; font-weight:700; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:10px; }
@@ -182,12 +183,13 @@
     <section class="recipes-container" id="recipesContainer">
 
         <!-- Recipe 1 -->
-        <article class="recipe-card" data-recipe-id="r1">
+        <article class="recipe-card" data-recipe-id="r1" data-base-cal="120">
             <div class="card-header">
                 <div class="card-number">1</div>
                 <h2 class="card-title">鶏ささみとキャベツの<br>「酒蒸しポン酢」</h2>
                 <p class="card-subtitle">高タンパク・低カロリーの王道。キャベツの甘みが引き立ちます。</p>
                 <div class="microwave-badge">⚡ 600W ・ 3〜4分</div>
+                <div class="calorie-badge">🔥 約120kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -219,12 +221,13 @@
         </article>
 
         <!-- Recipe 2 -->
-        <article class="recipe-card" data-recipe-id="r2">
+        <article class="recipe-card" data-recipe-id="r2" data-base-cal="250">
             <div class="card-header">
                 <div class="card-number">2</div>
                 <h2 class="card-title">ナスの<br>「とろとろ煮浸し風」</h2>
                 <p class="card-subtitle">揚げていないので大幅にカロリーカット。味がしみしみで絶品。</p>
                 <div class="microwave-badge">⚡ 600W ・ 3〜4分</div>
+                <div class="calorie-badge">🔥 約250kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -255,12 +258,13 @@
         </article>
 
         <!-- Recipe 3 -->
-        <article class="recipe-card" data-recipe-id="r3">
+        <article class="recipe-card" data-recipe-id="r3" data-base-cal="280">
             <div class="card-header">
                 <div class="card-number">3</div>
                 <h2 class="card-title">もやしと豚バラの<br>「重ね蒸し」</h2>
                 <p class="card-subtitle">包丁いらず！安くて早くて満足度が高い一品。</p>
                 <div class="microwave-badge">⚡ 600W ・ 4〜5分</div>
+                <div class="calorie-badge">🔥 約280kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -290,12 +294,13 @@
         </article>
 
         <!-- Recipe 4 -->
-        <article class="recipe-card" data-recipe-id="r4">
+        <article class="recipe-card" data-recipe-id="r4" data-base-cal="80">
             <div class="card-header">
                 <div class="card-number">4</div>
                 <h2 class="card-title">きのことブロッコリーの<br>「ガリバタ醤油蒸し」</h2>
                 <p class="card-subtitle">バターのコクと醤油の香ばしさで、満足感のある一品。</p>
                 <div class="microwave-badge">⚡ 600W ・ 約3分</div>
+                <div class="calorie-badge">🔥 約80kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -328,12 +333,13 @@
         </article>
 
         <!-- Recipe 5 -->
-        <article class="recipe-card" data-recipe-id="r5">
+        <article class="recipe-card" data-recipe-id="r5" data-base-cal="60">
             <div class="card-header">
                 <div class="card-number">5</div>
                 <h2 class="card-title">無限きのこブロッコリー<br>「ナムル風」</h2>
                 <p class="card-subtitle">ごま油の香りで食欲がすすむ！作り置きにも便利。</p>
                 <div class="microwave-badge">⚡ 600W ・ 約3分</div>
+                <div class="calorie-badge">🔥 約60kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -365,12 +371,13 @@
         </article>
 
         <!-- Recipe 6 -->
-        <article class="recipe-card" data-recipe-id="r6">
+        <article class="recipe-card" data-recipe-id="r6" data-base-cal="200">
             <div class="card-header">
                 <div class="card-number">6</div>
                 <h2 class="card-title">白菜と豚肉の<br>「ミルフィーユ蒸し」</h2>
                 <p class="card-subtitle">白菜の水分だけで蒸すからヘルシー。見た目も華やか。</p>
                 <div class="microwave-badge">⚡ 600W ・ 5〜6分</div>
+                <div class="calorie-badge">🔥 約200kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -401,12 +408,13 @@
         </article>
 
         <!-- Recipe 7 -->
-        <article class="recipe-card" data-recipe-id="r7">
+        <article class="recipe-card" data-recipe-id="r7" data-base-cal="50">
             <div class="card-header">
                 <div class="card-number">7</div>
                 <h2 class="card-title">ほうれん草の<br>「レンジ胡麻和え」</h2>
                 <p class="card-subtitle">鉄分・ビタミン豊富。副菜にぴったりの定番メニュー。</p>
                 <div class="microwave-badge">⚡ 600W ・ 約2分</div>
+                <div class="calorie-badge">🔥 約50kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -437,12 +445,13 @@
         </article>
 
         <!-- Recipe 8 -->
-        <article class="recipe-card" data-recipe-id="r8">
+        <article class="recipe-card" data-recipe-id="r8" data-base-cal="100">
             <div class="card-header">
                 <div class="card-number">8</div>
                 <h2 class="card-title">かぼちゃの<br>「レンジ煮」</h2>
                 <p class="card-subtitle">ホクホクで甘い。作り置きにも最適な副菜。</p>
                 <div class="microwave-badge">⚡ 600W ・ 4〜5分</div>
+                <div class="calorie-badge">🔥 約100kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -472,12 +481,13 @@
         </article>
 
         <!-- Recipe 9 -->
-        <article class="recipe-card" data-recipe-id="r9">
+        <article class="recipe-card" data-recipe-id="r9" data-base-cal="200">
             <div class="card-header">
                 <div class="card-number">9</div>
                 <h2 class="card-title">豆腐の<br>「レンジ麻婆風」</h2>
                 <p class="card-subtitle">混ぜてチンするだけ。ご飯にかけても美味しい！</p>
                 <div class="microwave-badge">⚡ 600W ・ 3〜4分</div>
+                <div class="calorie-badge">🔥 約200kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -509,12 +519,13 @@
         </article>
 
         <!-- Recipe 10 -->
-        <article class="recipe-card" data-recipe-id="r10">
+        <article class="recipe-card" data-recipe-id="r10" data-base-cal="180">
             <div class="card-header">
                 <div class="card-number">10</div>
                 <h2 class="card-title">鶏むね肉の<br>「よだれ鶏風」</h2>
                 <p class="card-subtitle">高タンパク・低脂質の王道。ピリ辛ダレが絶品。</p>
                 <div class="microwave-badge">⚡ 600W ・ 約4分</div>
+                <div class="calorie-badge">🔥 約180kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -547,12 +558,13 @@
         </article>
 
         <!-- Recipe 11 -->
-        <article class="recipe-card" data-recipe-id="r11">
+        <article class="recipe-card" data-recipe-id="r11" data-base-cal="150">
             <div class="card-header">
                 <div class="card-number">11</div>
                 <h2 class="card-title">卵と小松菜の<br>「中華風蒸し」</h2>
                 <p class="card-subtitle">ふんわり卵と小松菜の組み合わせ。朝ごはんにも◎</p>
                 <div class="microwave-badge">⚡ 600W ・ 2〜3分</div>
+                <div class="calorie-badge">🔥 約150kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -584,12 +596,13 @@
         </article>
 
         <!-- Recipe 12 -->
-        <article class="recipe-card" data-recipe-id="r12">
+        <article class="recipe-card" data-recipe-id="r12" data-base-cal="250">
             <div class="card-header">
                 <div class="card-number">12</div>
                 <h2 class="card-title">鮭の<br>「味噌マヨ蒸し」</h2>
                 <p class="card-subtitle">魚もレンジなら簡単！味噌マヨのコクが絶品。</p>
                 <div class="microwave-badge">⚡ 600W ・ 約4分</div>
+                <div class="calorie-badge">🔥 約250kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -621,12 +634,13 @@
         </article>
 
         <!-- Recipe 13 -->
-        <article class="recipe-card" data-recipe-id="r13">
+        <article class="recipe-card" data-recipe-id="r13" data-base-cal="200">
             <div class="card-header">
                 <div class="card-number">13</div>
                 <h2 class="card-title">鶏むね肉とキャベツの<br>「レンジ回鍋肉風」</h2>
                 <p class="card-subtitle">味噌ベースの中華味で白飯がすすむ！</p>
                 <div class="microwave-badge">⚡ 600W ・ 4〜5分</div>
+                <div class="calorie-badge">🔥 約200kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -659,12 +673,13 @@
         </article>
 
         <!-- Recipe 14 -->
-        <article class="recipe-card" data-recipe-id="r14">
+        <article class="recipe-card" data-recipe-id="r14" data-base-cal="180">
             <div class="card-header">
                 <div class="card-number">14</div>
                 <h2 class="card-title">じゃがいもの<br>「レンジジャーマンポテト風」</h2>
                 <p class="card-subtitle">ホクホクで満足感◎コンソメバターがたまらない！</p>
                 <div class="microwave-badge">⚡ 600W ・ 5〜6分</div>
+                <div class="calorie-badge">🔥 約180kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -696,12 +711,13 @@
         </article>
 
         <!-- Recipe 15 -->
-        <article class="recipe-card" data-recipe-id="r15">
+        <article class="recipe-card" data-recipe-id="r15" data-base-cal="150">
             <div class="card-header">
                 <div class="card-number">15</div>
                 <h2 class="card-title">チンゲンサイと鶏むねの<br>「中華オイスター蒸し」</h2>
                 <p class="card-subtitle">オイスターソースのコクで白飯泥棒！</p>
                 <div class="microwave-badge">⚡ 600W ・ 3〜4分</div>
+                <div class="calorie-badge">🔥 約150kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -733,12 +749,13 @@
         </article>
 
         <!-- Recipe 16 -->
-        <article class="recipe-card" data-recipe-id="r16">
+        <article class="recipe-card" data-recipe-id="r16" data-base-cal="80">
             <div class="card-header">
                 <div class="card-number">16</div>
                 <h2 class="card-title">たまねぎの<br>「丸ごとレンジ蒸し」</h2>
                 <p class="card-subtitle">加熱でとろっと甘い！バターポン酒が絶品。</p>
                 <div class="microwave-badge">⚡ 600W ・ 4〜5分</div>
+                <div class="calorie-badge">🔥 約80kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -769,12 +786,13 @@
         </article>
 
         <!-- Recipe 17 -->
-        <article class="recipe-card" data-recipe-id="r17">
+        <article class="recipe-card" data-recipe-id="r17" data-base-cal="170">
             <div class="card-header">
                 <div class="card-number">17</div>
                 <h2 class="card-title">じゃがいもとキャベツの<br>「コンソメバター蒸し」</h2>
                 <p class="card-subtitle">バターのコクとコンソメの旨味。洋風副菜にぴったり。</p>
                 <div class="microwave-badge">⚡ 600W ・ 5〜6分</div>
+                <div class="calorie-badge">🔥 約170kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -806,12 +824,13 @@
         </article>
 
         <!-- Recipe 18 -->
-        <article class="recipe-card" data-recipe-id="r18">
+        <article class="recipe-card" data-recipe-id="r18" data-base-cal="40">
             <div class="card-header">
                 <div class="card-number">18</div>
                 <h2 class="card-title">チンゲンサイの<br>「ガーリックオイル蒸し」</h2>
                 <p class="card-subtitle">シンプルに美味しい！ごま油の香りがたまらない。</p>
                 <div class="microwave-badge">⚡ 600W ・ 2〜3分</div>
+                <div class="calorie-badge">🔥 約40kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -842,12 +861,13 @@
         </article>
 
         <!-- Recipe 19 -->
-        <article class="recipe-card" data-recipe-id="r19">
+        <article class="recipe-card" data-recipe-id="r19" data-base-cal="220">
             <div class="card-header">
                 <div class="card-number">19</div>
                 <h2 class="card-title">鶏むねとキャベツの<br>「レンジバンバンジー」</h2>
                 <p class="card-subtitle">ごまだれが絶品！冷たくても美味しいので作り置き◎</p>
                 <div class="microwave-badge">⚡ 600W ・ 約4分+余熱5分</div>
+                <div class="calorie-badge">🔥 約220kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -882,12 +902,13 @@
         </article>
 
         <!-- Recipe 20 -->
-        <article class="recipe-card" data-recipe-id="r20">
+        <article class="recipe-card" data-recipe-id="r20" data-base-cal="180">
             <div class="card-header">
                 <div class="card-number">20</div>
                 <h2 class="card-title">キャベツたっぷり<br>「鶏むねのレンジ餃子風」</h2>
                 <p class="card-subtitle">皮なし餃子！ポン酒+ラー油で食べるとたまらない。</p>
                 <div class="microwave-badge">⚡ 600W ・ 4〜5分</div>
+                <div class="calorie-badge">🔥 約180kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -920,12 +941,13 @@
         </article>
 
         <!-- Recipe 21 -->
-        <article class="recipe-card" data-recipe-id="r21">
+        <article class="recipe-card" data-recipe-id="r21" data-base-cal="160">
             <div class="card-header">
                 <div class="card-number">21</div>
                 <h2 class="card-title">鶏むねとキャベツの<br>「塩昆布バター蒸し」</h2>
                 <p class="card-subtitle">塩昆布の旨味とバターのコクで味付け不要レベル！</p>
                 <div class="microwave-badge">⚡ 600W ・ 約4分</div>
+                <div class="calorie-badge">🔥 約160kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -956,12 +978,13 @@
         </article>
 
         <!-- Recipe 22 -->
-        <article class="recipe-card" data-recipe-id="r22">
+        <article class="recipe-card" data-recipe-id="r22" data-base-cal="120">
             <div class="card-header">
                 <div class="card-number">22</div>
                 <h2 class="card-title">鶏むねとキャベツの<br>「梅しそ蒸し」</h2>
                 <p class="card-subtitle">さっぱり系！ダイエット向きの爪やか一品。</p>
                 <div class="microwave-badge">⚡ 600W ・ 3〜4分</div>
+                <div class="calorie-badge">🔥 約120kcal</div>
             </div>
             <div class="card-body">
                 <div class="section-label"><span class="icon">🥘</span> 材料</div>
@@ -1033,6 +1056,12 @@ document.querySelectorAll('.serving-selector').forEach(sel => {
                 tag.textContent = text;
                 if (isChecked) tag.classList.add('checked');
             });
+            // Update calorie badge
+            const baseCal = parseInt(card.dataset.baseCal);
+            const calBadge = card.querySelector('.calorie-badge');
+            if (baseCal && calBadge) {
+                calBadge.textContent = '\uD83D\uDD25 約' + (baseCal * mult) + 'kcal';
+            }
         });
     });
 });
